@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir = "/decorators">
+	<!-- apply user -->
+	<decorator name="trang-chu" page="user.jsp">
+		<pattern>/trang-chu</pattern>
+	</decorator>
+	
+	<!-- apply admin page -->
+	<decorator name="home" page="admin.jsp">
+		<pattern>/home/*</pattern>
+	</decorator>
+</decorators>

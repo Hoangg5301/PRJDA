@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "categoryControllerOfAdmin")
 public class CategoryController {
-	@RequestMapping(value = "/home/category-admin", method = RequestMethod.GET)
+	@RequestMapping(value = "/home-category-admin", method = RequestMethod.GET)
 	public ModelAndView categoryPage() {
 		ModelAndView mav = new ModelAndView("admin/category");
 		return mav;
