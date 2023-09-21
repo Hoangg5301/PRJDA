@@ -25,8 +25,11 @@
 
 	<%@ include file="/common/admin/menu.jsp" %>
   <main class="main-content border-radius-lg ">
+    <hr/>
     <%@ include file="/common/admin/header.jsp" %>
+      <hr/>
     <dec:body/>
+      <hr/>
     <%@ include file="/common/admin/footer.jsp" %>
   </main>
 

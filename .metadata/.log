@@ -5597,3 +5597,34 @@ java.lang.IllegalArgumentException: can not get a buffer without a document refe
 
 !ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2023-09-20 16:19:17.163
 !MESSAGE The given URI http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Publishing failed with multiple errors
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\commons-logging-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\jstl-1.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\sitemesh-2.4.2.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-aop-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-beans-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-context-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-context-support-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-core-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-expression-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-jdbc-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-orm-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-tx-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-web-4.3.13.RELEASE.jar. May be locked by another process.
+!SUBENTRY 1 org.eclipse.wst.server.core 4 0 2023-09-21 07:01:43.127
+!MESSAGE Could not delete F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-mvc\WEB-INF\lib\spring-webmvc-4.3.13.RELEASE.jar. May be locked by another process.
