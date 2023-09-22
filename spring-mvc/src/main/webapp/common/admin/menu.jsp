@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<style>
-	
-</style>
+<!-- code jquery -->
+<script>
+	$("#click-dashboard").click(function(){
+		$.ajax({
+			type: "GET",
+			url:"/home-category-admin",
+			success: function(data){
+				
+			},
+			error: function(error){},
+		});
+	});
+</script>
+
 <!-- Phần menu -->
     <aside style = "background-color: #4e73df;" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
@@ -18,13 +29,13 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="./dashboard.html">
+          <a id="click-dashboard" class="nav-link text-white" href="<c:url value='/home-category-admin'/>" >
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="./tables.html">
+          <a class="nav-link text-white " href="#">
             <span class="nav-link-text ms-1">Quản lý danh mục</span>
           </a>
         </li>
