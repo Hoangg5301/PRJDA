@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BrandController {
 	@RequestMapping(value = "/home-brand-admin", method = RequestMethod.GET)
 	public ModelAndView categoryPage() {
-		ModelAndView mav = new ModelAndView("admin/brand");
+		ModelAndView mav = new ModelAndView("admin/brands/brand");
 		return mav;
 	}
 }
