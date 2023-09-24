@@ -3,43 +3,59 @@ package com.Bluewind.dto.admin;
 import com.Bluewind.dto.AbstractDTO;
 
 public class ProductDTO extends AbstractDTO<ProductDTO>{
+	private Integer productID;
 	private  String productName;
-	private int price;
+	private Integer price;
 	private String size;
 	private String color;
-	private int quantity;
+	private Integer quantity;
 	private String meterial;
 	private String weight;
+	private String gender;
 	private String describeDetail;
 	private String img1;
 	private String img2;
 	private String img3;
 	private String img4;
-	private int idType;
-	private int idBrand;
+	private Integer typeID;
+	private Integer brandID;
 	
-	public int getIdType() {
-		return idType;
+	
+	public Integer getTypeID() {
+		return typeID;
 	}
-	public void setIdType(int idType) {
-		this.idType = idType;
+	public void setTypeID(Integer typeID) {
+		this.typeID = typeID;
 	}
-	public int getIdBrand() {
-		return idBrand;
+	public Integer getBrandID() {
+		return brandID;
 	}
-	public void setIdBrand(int idBrand) {
-		this.idBrand = idBrand;
+	public void setBrandID(Integer brandID) {
+		this.brandID = brandID;
 	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Integer getProductID() {
+		return productID;
+	}
+	public void setProductID(Integer productID) {
+		this.productID = productID;
+	}
+
 	public String getProductName() {
 		return productName;
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getSize() {
@@ -54,10 +70,10 @@ public class ProductDTO extends AbstractDTO<ProductDTO>{
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	public String getMeterial() {

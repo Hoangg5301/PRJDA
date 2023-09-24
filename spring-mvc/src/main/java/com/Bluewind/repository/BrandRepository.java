@@ -6,5 +6,5 @@ import com.Bluewind.entity.BrandEntity;
 
 @Repository
 public interface BrandRepository extends JpaRepository<BrandEntity, Integer>{
-	
+
 }

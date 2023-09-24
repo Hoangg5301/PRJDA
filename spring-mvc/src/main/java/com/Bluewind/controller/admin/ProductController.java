@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProductController {
 	@RequestMapping(value = "/home-product-admin", method = RequestMethod.GET)
 	public ModelAndView productPage() {
-		ModelAndView mav = new ModelAndView("admin/product");
+		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
 }

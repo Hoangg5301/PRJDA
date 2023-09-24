@@ -9,15 +9,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="brand")
-public class BrandEntity {
+public class BrandEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int IDBrand;
+	@Column(name = "idbrand")
+	private Integer brandID;
 	@Column(name = "brandname")
 	private String brandName;
-	public int getIDBrand() {
-		return IDBrand;
+	@Column(name = "brandImg")
+	private String brandImg;
+	public String getBrandImg() {
+		return brandImg;
+	}
+	public void setBrandImg(String brandImg) {
+		this.brandImg = brandImg;
+	}
+
+	public Integer getBrandID() {
+		return brandID;
 	}
 	public String getBrandName() {
 		return brandName;
