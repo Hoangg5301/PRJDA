@@ -2,21 +2,30 @@ package com.Bluewind.dto.admin;
 
 import com.Bluewind.dto.AbstractDTO;
 
-public class cartDTO extends AbstractDTO<cartDTO>{
-	private int idTK;
-	private int idProduct;
+public class CartDTO extends AbstractDTO<CartDTO>{
+	private int cartID;
+	private int accountID;
+	private int productID;
 	private int quantity;
-	public int getIdTK() {
-		return idTK;
+
+	
+	public int getCartID() {
+		return cartID;
 	}
-	public void setIdTK(int idTK) {
-		this.idTK = idTK;
+	public void setCartID(int cartID) {
+		this.cartID = cartID;
 	}
-	public int getIdProduct() {
-		return idProduct;
+	public int getAccountID() {
+		return accountID;
 	}
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
+	}
+	public int getProductID() {
+		return productID;
+	}
+	public void setProductID(int productID) {
+		this.productID = productID;
 	}
 	public int getQuantity() {
 		return quantity;

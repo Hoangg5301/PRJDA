@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.Bluewind.convert.ProductConvert;
 import com.Bluewind.dto.admin.ProductDTO;
@@ -37,21 +38,25 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
+	@Transactional
 	public ProductDTO insert(ProductDTO dto) {
-		
-		return null;
+		ProductEntity productEntity = productConvert.toEntity(dto);
+		return productConvert.toDTO(productRepository.save(productEntity));
 	}
 
 	@Override
+	@Transactional
 	public ProductDTO update(ProductDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		ProductEntity oldEntity = productRepository.findOne(dto.getProductID());
+		oldEntity = productConvert.toEntity(dto, oldEntity);
+		oldEntity = productRepository.save(oldEntity);
+		return productConvert.toDTO(oldEntity);
 	}
 
 	@Override
+	@Transactional
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		
+		productRepository.delete(id);
 	}
 	
 }

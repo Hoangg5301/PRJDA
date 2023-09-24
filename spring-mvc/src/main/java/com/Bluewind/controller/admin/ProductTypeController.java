@@ -25,7 +25,7 @@ public class ProductTypeController {
 	@RequestMapping(value = "/home-producttype-admin", method = RequestMethod.GET)
 	public ModelAndView displayList(HttpServletRequest request) {
 		
-		ModelAndView mav = new ModelAndView("admin/brands/brand");
+		ModelAndView mav = new ModelAndView("admin/productTypes/productType");
 		BrandDTO brandDTO = new BrandDTO();
 		brandDTO.setListResult(brandService.findAll());
 		
@@ -41,7 +41,7 @@ public class ProductTypeController {
 	@RequestMapping(value = "/home-producttypeupdate-admin", method = RequestMethod.GET)
 	public ModelAndView getUpdate(@RequestParam(value ="id", required = false) Integer id) {
 		
-		ModelAndView mav = new ModelAndView("admin/brands/brandEdit");
+		ModelAndView mav = new ModelAndView("");
 		BrandDTO brandDTO = new BrandDTO();
 		if(id == null) {
 			mav.addObject("model", brandDTO);

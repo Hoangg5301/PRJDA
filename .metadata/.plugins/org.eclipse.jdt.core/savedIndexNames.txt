@@ -27,7 +27,6 @@ INDEX VERSION 1.134+F:\DATN\BlueWindShop\.metadata\.plugins\org.eclipse.jdt.core
 4288978126.index
 1504053740.index
 2629237954.index
-2730531055.index
 1914814464.index
 2557846405.index
 1819018617.index

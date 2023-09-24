@@ -3,9 +3,7 @@ package com.Bluewind.convert;
 import org.springframework.stereotype.Component;
 
 import com.Bluewind.dto.admin.ProductDTO;
-import com.Bluewind.dto.admin.ProductTypeDTO;
 import com.Bluewind.entity.ProductEntity;
-import com.Bluewind.entity.ProductTypeEntity;
 
 @Component
 public class ProductConvert {
