@@ -4,15 +4,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                    <a href="#" class="fables-second-border-color border-bottom pb-3 d-block mb-3 mt-minus-13"><img
-                            src="assets/custom/images/fables-logo.png" alt="fables template"></a>
+                    <a href="<c:url value='/trang-chu' /> " class="fables-second-border-color border-bottom pb-3 d-block mb-3 mt-minus-13"><img
+                            src="<c:url value='/image/logo/blueWindlogo.png' />" style="width: 150px; height: 120px;" alt="fables template"></a>
                     <p class="font-15 fables-third-text-color">
-                        t is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                        distribution of letters.
-                        <br><br>
-                        t is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout.
+	                    Bluewind đề cao tính khác biệt trong xây dựng dịch vụ đối với khách hàng để phù hợp với văn hóa và nâng tầm chất lượng. 
+	                    Đồng thời luôn đặt khách hàng là trung tâm trong mọi suy nghĩ và hành động.
                     </p>
 
                 </div>
@@ -23,14 +19,13 @@
                         <h4 class="font-16 semi-font"><span
                                 class="fables-iconmap-icon fables-second-text-color pr-2 font-20 mt-1 d-inline-block"></span>
                             Địa chỉ</h4>
-                        <p class="font-14 fables-fifth-text-color mt-2 ml-4">level13, 2Elizabeth St, Melbourne, Victor
-                            2000</p>
+                        <p class="font-14 fables-fifth-text-color mt-2 ml-4">85 Xuân Thuỷ, Cầu Giấy, Hà Nội</p>
                     </div>
                     <div class="my-3">
                         <h4 class="font-16 semi-font"><span
                                 class="fables-iconphone fables-second-text-color pr-2 font-20 mt-1 d-inline-block"></span>
                             Điện thoại</h4>
-                        <p class="font-14 fables-fifth-text-color mt-2 ml-4">+333 111 111 000</p>
+                        <p class="font-14 fables-fifth-text-color mt-2 ml-4">0867608463</p>
                     </div>
                     <div class="my-3">
                         <h4 class="font-16 semi-font"><span
@@ -45,7 +40,7 @@
                     <ul class="nav fables-footer-links">
                         <li><a href="about1.html">Trang chủ</a></li>
                         <li><a href="team.html">Sản phẩm</a></li>
-                        <li><a href="contactus1.html">Liên hệ</a></li>
+
                         <li><a href="gallery.html">Bài viết</a></li>
                     </ul>
                 </div>

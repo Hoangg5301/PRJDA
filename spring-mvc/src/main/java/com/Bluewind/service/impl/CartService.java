@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.Bluewind.convert.CartConvert;
 import com.Bluewind.dto.admin.CartDTO;
@@ -39,6 +40,7 @@ public class CartService implements ICartService{
 	}
 
 	@Override
+	@Transactional
 	public CartDTO insert(CartDTO dto) {
 		CartEntity cartEntity = cartConvert.toEntity(dto);
 		cartEntity = cartRepository.save(cartEntity);
@@ -47,16 +49,21 @@ public class CartService implements ICartService{
 	}
 
 	@Override
+	@Transactional
 	public CartDTO update(CartDTO dto) {
-		CartEntity cartEntity = cartRepository.findCartEntityByAccountIDAndProductID(dto.getAccountID(), dto.getProductID());//finCartEntity(dto.getAccountID(), dto.getProductID());
+		CartEntity cartEntity = cartRepository.find(dto.getAccountID(), dto.getProductID());//finCartEntity(dto.getAccountID(), dto.getProductID());
 		cartEntity = cartConvert.toEntity(dto, cartEntity);
 		cartEntity = cartRepository.save(cartEntity);
 		return cartConvert.toDTO(cartEntity);
 	}
 
 	@Override
-	public void delete(Integer id) {
-		cartRepository.delete(id);
+	@Transactional
+	public void delete(Integer accountID) {
+		List<CartEntity> listCartEntity = cartRepository.findByAccountID(accountID);
+		for(CartEntity cartEntity : listCartEntity) {
+			cartRepository.delete(cartEntity);
+		}
 	}
 
 }

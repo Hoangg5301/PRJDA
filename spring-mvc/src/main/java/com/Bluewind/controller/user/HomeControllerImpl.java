@@ -13,5 +13,4 @@ public class HomeControllerImpl{
 		ModelAndView mav = new ModelAndView("user/home");
 		return mav;
 	}
-	
 }

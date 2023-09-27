@@ -435,21 +435,21 @@
                             <span class="fables-iconbussiness fables-second-text-color fa-3x"></span>
                             <h2 class="fables-main-text-color font-18 my-2">Chính sách hấp dẫn</h2>
                             <p class="fables-forth-text-color font-weight-light">
-                                Mất 1 chân đền 1 chân giả
+                                chính sách đổi trả nhanh chóng, giao hàng tận nơi, an toàn.
                             </p>
                         </div>
                         <div class="col-12 col-sm-6 my-4 text-center text-md-left wow fadeInRight">
                             <span class="fables-iconbussiness2 fables-second-text-color fa-3x"></span>
                             <h2 class="fables-main-text-color font-18 my-2">Giao hàng miền phí</h2>
                             <p class="fables-forth-text-color font-weight-light">
-                                Áp dụng cho các đơn hàng trăm đôi
+                                Áp dụng với tất cả đơn hàng có địa chỉ dưới 40KM.
                             </p>
                         </div>
                         <div class="col-12 col-sm-6 my-4 text-center text-md-left wow fadeInRight">
                             <span class="fables-iconbussiness3 fables-second-text-color fa-3x"></span>
                             <h2 class="fables-main-text-color font-18 my-2">Giá cả cạnh tranh</h2>
                             <p class="fables-forth-text-color font-weight-light">
-                                Giá cạnh tranh nhất thị trường
+                                Giá luôn tốt nhất.
                             </p>
                         </div>
                         <div class="col-12 col-sm-6 my-4 text-center text-md-left wow fadeInRight">
@@ -473,11 +473,7 @@
                             thắc mặc hoặc liên hệ hợp tác.</p>
 
                     </div>
-                    <div class="col-12 col-md-4 offset-xl-2 col-xl-2 text-center">
-                        <a href="contactus1.html"
-                            class="btn fables-second-background-color fables-btn-rounded white-color mt-3 position-relative z-index font-19 px-5 white-color-hover">Liên
-                            hệ ngay</a>
-                    </div>
+
                 </div>
 
             </div>

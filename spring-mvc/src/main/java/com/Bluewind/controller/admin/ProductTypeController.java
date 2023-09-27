@@ -1,7 +1,5 @@
 package com.Bluewind.controller.admin;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +24,7 @@ public class ProductTypeController {
 	public ModelAndView displayList(HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView("admin/productTypes/productType");
-		BrandDTO brandDTO = new BrandDTO();
-		brandDTO.setListResult(brandService.findAll());
-		
-		if(request.getParameter("message") != null) {
-			Map<String, String> mapMessage = messageUtil.getMessage(request.getParameter("message"));
-			mav.addObject("message", mapMessage.get("message"));
-			mav.addObject("alert", mapMessage.get("alert"));
-		}
-		mav.addObject("model",brandDTO);
+
 		return mav;
 	}
 	

@@ -23,7 +23,7 @@ public class CartAPI {
 		return cartService.update(cartDTO);
 	}
 	@DeleteMapping("/api/user/cart")
-	public void deleteCart(@RequestBody Integer idCart) {
-		cartService.delete(idCart);
+	public void deleteCart(@RequestBody Integer accountID) {
+		cartService.delete(accountID);
 	}
 }

@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product_type")
+@Table(name="category")
 public class ProductTypeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDType")
+	@Column(name = "IDCategory")
 	private Integer typeID;
 	
-	@Column(name = "typeName")
+	@Column(name = "categoryName")
 	private String typeName;
 
 	public String getTypeName() {
