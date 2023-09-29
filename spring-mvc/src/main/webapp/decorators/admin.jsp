@@ -18,6 +18,11 @@
 	
 	<link href="<c:url value='template/admin/custom/tableadmin.css'/> "
 	rel="stylesheet">
+
+	<link href="<c:url value='template/AlertComfirm/sweetalert2.min.css'/> "
+	rel="stylesheet">
+	
+	<script src="<c:url value='template/AlertComfirm/sweetalert2.min.js'/>"></script>
 </head>
 <body class="content-admin-deco">
 	<div class="left-content-admin">

@@ -56,10 +56,25 @@ public class BrandService implements IBrandService{
 	}
 
 	@Override
+	@Transactional
 	public void delete(Integer id) {
 		brandRepository.delete(id);
 	}
-	
+
+	@Override
+	@Transactional
+	public void uploadAdd(String part) {
+		Integer id = brandRepository.findLastId();
+		brandRepository.uploadAdd(part, id);
+	}
+
+	@Override
+	@Transactional
+	public void uploadUpdate(Integer id, String part) {
+		brandRepository.uploadUpdate(part, id);
+	}
+
+
 	
 
 

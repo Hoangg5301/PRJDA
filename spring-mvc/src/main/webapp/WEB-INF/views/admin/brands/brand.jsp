@@ -74,3 +74,9 @@
 	</form:form>
 </div>
 
+<script>
+	
+	function warningBeforeDelete(){
+		
+	}
+</script>

@@ -10,4 +10,6 @@ public interface IBrandService {
 	BrandDTO insert(BrandDTO dto);
 	BrandDTO update(BrandDTO dto);
 	void delete(Integer id);
+	void uploadAdd(String part);
+	void uploadUpdate(Integer id, String part);
 }

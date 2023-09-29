@@ -3,20 +3,26 @@
     <%@ include file="/common/taglib.jsp" %>
     
     <c:url var ="brandApiUrl" value="/api/brand"/>
+    <c:url var ="uploadUrl" value="/api/upload/brand"/>
     <c:url var ="brandDisplayUrl" value="/home-brand-admin"/>
 		<div id="dialog_brand" class ="margin-content-admin" >
 		
-			<form:form id="form-add-brand" modelAttribute="model" path="" method="POST">
+			<form:form id="form-add-brand" modelAttribute="model">
 
 				<div>
 					<label><b>Tên nhãn hiệu:</b></label>
 					<form:input path="brandName" />
 					<input id="brandID" name="brandID" type="hidden" value="${model.brandID}" />
 				</div>
+			</form:form>
+			
+			<form:form id="form-image-brand1">
 				<div>
-					<label><b>Hình ảnh nhãn hiệu:</b></label>
-					<input type="file" name ="brandImg" />
+					<label><b>Hình ảnh 1:</b></label>
+					<input type="file" name ="img1" id="img1" />
 				</div>
+			</form:form>
+					
 				<c:if test="${not empty model.brandID}">
 					<button type="button" id="brand_dialog_add">cập nhật</button>
 				</c:if>
@@ -25,7 +31,7 @@
 				</c:if>
 				
 				<button type="button" id="brand_dialog_cancel"><a href="<c:url value ="/home-brand-admin" />">Huỷ bỏ</a></button>
-			</form:form>
+			
 
 		</div>
 
@@ -42,8 +48,10 @@
 				});
 				if(id ==""){
 					addBrand(data);
+					addImg();
 				}else{
 					updateBrand(data);
+					addImg();
 				}
 				console.log(formData);
 			});
@@ -60,6 +68,30 @@
 		            },
 		            error: function (error) {
 		            	window.location.href = '${brandDisplayUrl}?message=error_system';
+		            }
+				});
+			}
+			
+			function addImg(){
+				var dataImg = new FormData();
+				var imageProduct = $("#img1")[0].files[0];
+				dataImg.append("img1", imageProduct);
+				
+				var brandID = $("#brandID").val();
+				dataImg.append("id", brandID);
+				
+				$.ajax({
+					url: '${uploadUrl}',
+					type: 'POST',
+					data: dataImg,
+					enctype: 'multipart/form-data',
+					contentType: false,
+		            processData: false,
+		            success: function (result) {
+		            	console.log(result);
+		            },
+		            error: function (error) {
+		            	console.log(error);
 		            }
 				});
 			}
