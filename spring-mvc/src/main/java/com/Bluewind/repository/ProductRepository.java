@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.ProductEntity;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer>{
 	@Modifying
@@ -20,4 +22,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
 	//lấy bản ghi cuối cùng.
 	@Query("select MAX(p.productID) from ProductEntity p order by p.productID DESC")
 	Integer findLastId();
+
+	List<ProductEntity> findTop4ByOrderByProductIDDesc();
+
+	List<ProductEntity> findTop4ByBrandID(Integer brandID);
 }

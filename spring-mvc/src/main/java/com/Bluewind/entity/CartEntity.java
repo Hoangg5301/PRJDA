@@ -1,11 +1,7 @@
 package com.Bluewind.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +21,9 @@ public class CartEntity {
 	
 	@Column(name = "quantity")
 	private int quantity;
+
+	@OneToMany(mappedBy = "cartEntity")
+	private List<BrandEntity> brandEntities;
 
 	public int getQuantity() {
 		return quantity;

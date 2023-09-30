@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.PostEntity;
 
+import java.util.List;
+
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Integer>{
+
+    List<PostEntity> findTop3ByOrderByPostID();
 
 }

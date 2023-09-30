@@ -10,4 +10,5 @@ public interface IPostService {
 	PostDTO insert(PostDTO dto);
 	PostDTO update(PostDTO dto);
 	void delete(Integer id);
+	List<PostDTO> getList();
 }

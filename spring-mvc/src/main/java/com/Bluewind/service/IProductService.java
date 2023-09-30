@@ -14,4 +14,9 @@ public interface IProductService {
 	void delete(Integer id);
 	void uploadAdd(String path1, String path2, String path3, String path4);
 	void uploadUpdate(String path1, String path2, String path3, String path4, Integer id);
+
+	List<ProductDTO> findLast();
+
+	List<ProductDTO> findAllByBrandID(Integer brandID);
+
 }

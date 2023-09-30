@@ -46,7 +46,7 @@ public class BrandAPI {
 		
 		String fileName1 = img1.getOriginalFilename(); 
 		try {
-			FileCopyUtils.copy(img1.getBytes(), new File("F:/DATN/BlueWindShop/spring-mvc/src/main/webapp/image/" + fileName1));
+			FileCopyUtils.copy(img1.getBytes(), new File("C:\\Users\\Admin\\dev\\t\\PRJDA\\spring-mvc\\src\\main\\webapp\\image\\" + fileName1));
 			String part = ("/image/"+fileName1);
 			if(id == null) {
 				brandService.uploadAdd(part);
