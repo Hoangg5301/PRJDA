@@ -46,7 +46,16 @@ public class ProductAPI {
 			FileCopyUtils.copy(img[1].getBytes(), new File("F:/DATN/BlueWindShop/spring-mvc/src/main/webapp/image/" + fileName2));
 			FileCopyUtils.copy(img[2].getBytes(), new File("F:/DATN/BlueWindShop/spring-mvc/src/main/webapp/image/" + fileName3));
 			FileCopyUtils.copy(img[3].getBytes(), new File("F:/DATN/BlueWindShop/spring-mvc/src/main/webapp/image/" + fileName4));
-			System.out.println(id);
+			
+			String path1 = ("/image/"+fileName1);
+			String path2 = ("/image/"+fileName2);
+			String path3 = ("/image/"+fileName3);
+			String path4 = ("/image/"+fileName4);
+			if(id == null) {
+				productService.uploadAdd(path1, path2, path3, path4);
+			}else {
+				productService.uploadUpdate(path1, path2, path3, path4, id);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

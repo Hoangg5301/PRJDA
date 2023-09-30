@@ -20,13 +20,14 @@
                             <h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
                         </div>
                         <div class="card-body">
-                        <c:url var="brandAdd" value ="home-brandupdate-admin" />
+                        <c:url var="brandAdd" value ="home-productupdate-admin" />
 							<div style="align-items: end; justify-content: end;;"><button id="brand_add" type="button"><a href="${brandAdd}">Thêm</a></button></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="hcenter-content">
                                             <th>Tên sản phẩm</th>
+                                            <th>Ảnh</th>
                                             <th>Giá</th>
                                             <th>Số lương</th>
                                             <th>Nhãn hiệu</th>
@@ -35,10 +36,12 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        	<td>Giày Thể Thao Nike Quest 4 Road Running Shoes DA1105-007 Màu Ghi</td>
-                                        	<td>1200.000 VNĐ</td>
-                                        	<td>155</td>
-                                        	<td>NIKE</td>
+                                        	<c:forEach var="item" items="${model.listResult}" >
+                                        	<td>${item.productName}</td>
+                                        	<td><img src="<c:url value ='${item.img1}' />" /></td>
+                                        	<td>${item.price} VNĐ</td>
+                                        	<td>${item.quantity}</td>
+                                        	<td>${item.brandName}</td>
                                         	<c:url var="brandUpdate" value="home-brandupdate-admin">
 												<c:param name="id" value="${item.brandID}"/>
 											</c:url>
@@ -60,7 +63,7 @@
                                                 </a>
                                              </td>
                                         </tr>
-                                        
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

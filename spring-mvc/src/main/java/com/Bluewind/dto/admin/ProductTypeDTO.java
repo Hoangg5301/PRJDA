@@ -1,8 +1,21 @@
 package com.Bluewind.dto.admin;
 
-public class ProductTypeDTO {
+import com.Bluewind.dto.AbstractDTO;
+
+public class ProductTypeDTO extends AbstractDTO<ProductTypeDTO>{
 	private Integer typeID;
 	private String typeName;
+	
+	private String typeDetail;
+
+	
+	public String getTypeDetail() {
+		return typeDetail;
+	}
+
+	public void setTypeDetail(String typeDetail) {
+		this.typeDetail = typeDetail;
+	}
 
 	public String getTypeName() {
 		return typeName;

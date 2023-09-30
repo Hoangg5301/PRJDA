@@ -12,11 +12,23 @@ import javax.persistence.Table;
 public class ProductTypeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDCategory")
+	@Column(name = "IDType")
 	private Integer typeID;
 	
-	@Column(name = "categoryName")
+	@Column(name = "typeName")
 	private String typeName;
+	
+	@Column(name = "typeDetail")
+	private String typeDetail;
+	
+
+	public String getTypeDetail() {
+		return typeDetail;
+	}
+
+	public void setTypeDetail(String typeDetail) {
+		this.typeDetail = typeDetail;
+	}
 
 	public String getTypeName() {
 		return typeName;

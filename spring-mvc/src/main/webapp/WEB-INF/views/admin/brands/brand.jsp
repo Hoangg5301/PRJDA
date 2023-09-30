@@ -37,6 +37,8 @@
                                     
                                     	<c:forEach var="item" items="${model.listResult}" >
                                         <tr>
+                                        	<input type="hidden" id = "idElement" value="${item.brandID}" />
+                                        	<c:url var="deletebyid" value ="/api/brand" />
                                         	<td>${item.brandName}</td>
 											<td>${item.brandImg}</td>
 											
@@ -53,12 +55,13 @@
                                              <c:url var="brandDelete" value="/api/brand">
 												<c:param name="id" value="${item.brandID}"/>
 											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
+											<button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete()">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
                                                     <span class="text">Xóa</span>
-                                                </a>
+											</button>
+                                                
                                              </td>
                                         </tr>
                                         
@@ -77,6 +80,39 @@
 <script>
 	
 	function warningBeforeDelete(){
+		swal({
+			  title: "Xác nhận",
+			  text: "Bạn có muốn thực hiện yêu cầu này không",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-success",
+			  cancelButtonClass: "btn-danger",
+			  confirmButtonText: "xác nhận",
+			  cancelButtonText: "huỷ bỏ",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			}).then(function(isConfirm) {
+			  if (isConfirm) {
+			    	var id = $("#idElement").val();
+			    	deleteById(id);
+			  } 
+			});
+	}
+	
+	function deleteById(id){
+		$.ajax({
+			url: '${deletebyid}',
+			type: 'DELETE',
+			contentType: 'application/json',
+            data: JSON.stringify(id),
+			success: function(result){
+				window.location.href = '${brandDisplayUrl}?message=delete_success';
+			},
+			
+			error: function (error) {
+            	window.location.href = '${brandDisplayUrl}?message=error_system';
+            }
+		})
 		
 	}
 </script>

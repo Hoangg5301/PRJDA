@@ -19,8 +19,15 @@ public class ProductDTO extends AbstractDTO<ProductDTO>{
 	private String img4;
 	private Integer typeID;
 	private Integer brandID;
+	private String brandName;
 	
 	
+	public String getBrandName() {
+		return brandName;
+	}
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
 	public Integer getTypeID() {
 		return typeID;
 	}

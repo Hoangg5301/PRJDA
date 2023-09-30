@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="brandAdd"/>
+		<item key="selection" value="brandDisplayUrl"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="brandDisplayUrl"/>
+			<item value="idElement"/>
+			<item value="deletebyid"/>
+			<item value="part"/>
+			<item value="uploadUrl"/>
+			<item value="brandApiUrl"/>
+			<item value="datatable"/>
+			<item value="brand_dialog_add"/>
+			<item value="additionalProperties"/>
 			<item value="brandAdd"/>
 			<item value="brandUpdate"/>
 			<item value="Showing 1 to 10 of 57 entries"/>
 			<item value="DataTables Example"/>
 			<item value="navbarBlur"/>
 			<item value="bg-gradient-dark"/>
-			<item value=".bg-gradient-dark"/>
-			<item value="fa fa-cog fixed-plugin-button-nav cursor-pointe"/>
-			<item value="jstl"/>
-			<item value="jsp"/>
 		</list>
 		<list key="replacehistory">
+			<item value="path"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

@@ -2,17 +2,58 @@
     pageEncoding="UTF-8"%>
     <%@ include file="/common/taglib.jsp" %>
     
-    <c:url var ="brandApiUrl" value="/api/brand"/>
-    <c:url var ="uploadUrl" value="/api/upload/brand"/>
-    <c:url var ="brandDisplayUrl" value="/home-brand-admin"/>
+    <c:url var ="brandApiUrl" value="/api/product"/>
+    <c:url var ="uploadUrl" value="/api/upload/product"/>
+    <c:url var ="brandDisplayUrl" value="/home-product-admin"/>
 		<div id="dialog_brand" class ="margin-content-admin" >
 		
 			<form:form id="form-add-brand" modelAttribute="model">
 
 				<div>
-					<label><b>Tên nhãn hiệu:</b></label>
-					<form:input path="brandName" />
+					<label><b>Tên sản phẩm:</b></label>
+					<form:input path="productName" />
 					<input id="brandID" name="brandID" type="hidden" value="${model.brandID}" />
+				</div>
+					<label><b>Giá:</b></label>
+					<form:input path="productName" />
+				<div>
+				
+				</div>
+					<label><b>Size:</b></label>
+					<form:input path="productName" />
+				<div>
+				</div>
+					<label><b>màu sắc:</b></label>
+					<form:input path="productName" />
+				<div>
+								</div>
+					<label><b>Số lượng:</b></label>
+					<form:input path="productName" />
+				<div>
+								</div>
+					<label><b>Chất liệu:</b></label>
+					<form:input path="productName" />
+				<div>
+								</div>
+					<label><b>Trọng lượng:</b></label>
+					<form:input path="productName" />
+				<div>
+								</div>
+					<label><b>Mô tả:</b></label>
+					<form:input path="describe" />
+				<div>
+								</div>
+					<label><b>Giới tính</b></label>
+					<form:input path="gender" />
+				<div>
+				</div>
+					<label><b>Loại sản phẩm:</b></label>
+					
+				<div>
+				</div>
+					<label><b>Nhãn hiệu:</b></label>
+					
+				<div>
 				</div>
 			</form:form>
 			

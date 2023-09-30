@@ -38,84 +38,37 @@
                                     <thead>
                                         <tr class="hcenter-content">
                                             <th>Tên danh mục</th>
-                                            <th>Ảnh</th>
+                                            <th>Mô tả chi tiết</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <c:forEach var="item" items="${model.listResult}" >
                                         <tr>
-                                            <td>Giày</td>
-                                            <td><img style="width: 160px; height:160px;" src="<c:url value ='image/sp/giay1.jpg' /> "></td>
-                                            <c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
+                                            <td>${item.typeName}</td>
+                                            <td>${item.typeName}</td>
+                                            <input id="idElement" value="${item.typeID}" />
+                                            <c:url var="productTypeUpdate" value="home-producttypeupdate-admin">
+												<c:param name="id" value="${item.typeID}"/>
 											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
+                                        	<td class="hcenter-content"><a href="${productTypeUpdate}" class="btn btn-warning btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-fw fa-cog"></i>
                                                     </span>
                                                     <span class="text">Sửa</span>
                                                 </a>
                                                 
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
+                                             <c:url var="productTypeDelete" value="/api/prducttype" />
+											
+                                                <button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete()">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
                                                     <span class="text">Xóa</span>
-                                                </a>
+											</button>
                                              </td>
                                         </tr>
-                                        <tr>
-                                            <td>Tất</td>
-                                            <td><img src="<c:url value ='image/sp/Tat.jpg' /> "></td>
-                                            <c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>dây giày</td>
-                                            <td><img src="<c:url value ='image/sp/daygiay.jpg' /> "></td>
-                                            <c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
+                                        </c:forEach>
                                         
                                     </tbody>
                                 </table>
@@ -133,7 +86,45 @@
         <!-- End of Content Wrapper -->
 
     </div>
-                    
-
     </div>
+    
+    <script>
+	
+	function warningBeforeDelete(){
+		swal({
+			  title: "Xác nhận",
+			  text: "Bạn có muốn thực hiện yêu cầu này không",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-success",
+			  cancelButtonClass: "btn-danger",
+			  confirmButtonText: "xác nhận",
+			  cancelButtonText: "huỷ bỏ",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			}).then(function(isConfirm) {
+			  if (isConfirm) {
+			    	var id = $("#idElement").val();
+			    	deleteById(id);
+			  } 
+			});
+	}
+	
+	function deleteById(id){
+		$.ajax({
+			url: '${productTypeDelete}',
+			type: 'DELETE',
+			contentType: 'application/json',
+            data: JSON.stringify(id),
+			success: function(result){
+				window.location.href = '${brandDisplayUrl}?message=delete_success';
+			},
+			
+			error: function (error) {
+            	window.location.href = '${brandDisplayUrl}?message=error_system';
+            }
+		})
+		
+	}
+</script>
 

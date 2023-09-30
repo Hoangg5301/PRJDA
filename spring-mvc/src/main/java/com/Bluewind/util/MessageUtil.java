@@ -19,7 +19,10 @@ public class MessageUtil {
 			message.put("message", "loi he thong");
 			message.put("alert", "loi he thong");
 		}
-		
+		else if(typeMessage.equals("delete_success")) {
+			message.put("message", "xoa thanh cong");
+			message.put("alert", "xoa thanh cong");
+		}
 		return message;
 	}
 }
