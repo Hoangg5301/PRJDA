@@ -3,7 +3,7 @@
     <%@ include file="/common/taglib.jsp" %>
     
     <c:url var ="brandApiUrl" value="/api/product"/>
-    <c:url var ="uploadUrl" value="/api/upload/product"/>
+    <c:url var ="uploadUrl" value="/api/upload/product"/> 
     <c:url var ="brandDisplayUrl" value="/home-product-admin"/>
 		<div id="dialog_brand" class ="margin-content-admin" >
 		
@@ -15,32 +15,32 @@
 					<input id="brandID" name="brandID" type="hidden" value="${model.brandID}" />
 				</div>
 					<label><b>Giá:</b></label>
-					<form:input path="productName" />
+					<form:input path="price" />
 				<div>
 				
 				</div>
 					<label><b>Size:</b></label>
-					<form:input path="productName" />
+					<form:input path="size" />
 				<div>
 				</div>
 					<label><b>màu sắc:</b></label>
-					<form:input path="productName" />
+					<form:input path="color" />
 				<div>
 								</div>
 					<label><b>Số lượng:</b></label>
-					<form:input path="productName" />
+					<form:input path="quantity" />
 				<div>
 								</div>
 					<label><b>Chất liệu:</b></label>
-					<form:input path="productName" />
+					<form:input path="meterial" />
 				<div>
 								</div>
 					<label><b>Trọng lượng:</b></label>
-					<form:input path="productName" />
+					<form:input path="weight" />
 				<div>
 								</div>
 					<label><b>Mô tả:</b></label>
-					<form:input path="describe" />
+					<form:input path="describeDetail" />
 				<div>
 								</div>
 					<label><b>Giới tính</b></label>
@@ -48,47 +48,43 @@
 				<div>
 				</div>
 					<label><b>Loại sản phẩm:</b></label>
+					<select name="typeID" id="select-type">
+						<option>--Chọn loại sản phẩm--</option>
+						<c:forEach var="listType" items="${listProductType}">
+							<option value="${listType.typeID}">${listType.typeName}</option>
+						</c:forEach>
+					</select>
 					
 				<div>
 				</div>
 					<label><b>Nhãn hiệu:</b></label>
-					
+					<select id="select-brand" name ="brandID">
+						<option id="select-brand">--Chọn loại nhãn hiệu--</option>
+						<c:forEach var="listBrand" items="${listBrand}">
+							<option value = "${listBrand.brandID}">${listBrand.brandName}</option>
+						</c:forEach>
+					</select>
 				<div>
 				</div>
 			</form:form>
 			
-			<form:form id="form-image-brand1">
+			<form:form id="form-image-prodduct">
 				<div>
 					<label><b>Hình ảnh 1:</b></label>
 					<input type="file" name ="img1" id="img1" />
-				</div>
-			</form:form>
-			
-			<form:form id="form-image-brand2">
-				<div>
 					<label><b>Hình ảnh 2:</b></label>
-					<input type="file" name ="img2" />
-				</div>
-			</form:form>
-			
-			<form:form id="form-image-brand3">
-				<div>
+					<input type="file" name ="img2" id="img2" />
 					<label><b>Hình ảnh 3:</b></label>
-					<input type="file" name ="img3" />
-				</div>
-			</form:form>
-			
-			<form:form id="form-image-brand4">
-				<div>
+					<input type="file" name ="img3" id="img3" />
 					<label><b>Hình ảnh 4:</b></label>
-					<input type="file" name ="img4" />
+					<input type="file" name ="img4" id="img4" />
 				</div>
 			</form:form>
 			
-				<c:if test="${not empty model.brandID}">
+				<c:if test="${not empty model.productID}">
 					<button type="button" id="brand_dialog_add">cập nhật</button>
 				</c:if>
-				<c:if test="${empty model.brandID}">
+				<c:if test="${empty model.productID}">ss
 					<button type="button" id="brand_dialog_add">thêm</button>
 				</c:if>
 				
@@ -135,8 +131,15 @@
 			
 			function addImg(){
 				var dataImg = new FormData();
-				var imageProduct = $("#img1")[0].files[0];
-				dataImg.append("img1", imageProduct);
+				var imageProduct1 = $("#img1")[0].files[0];
+				dataImg.append("img", imageProduct1);
+				var imageProduct2 = $("#img2")[0].files[0];
+				dataImg.append("img", imageProduct2);
+				var imageProduct3 = $("#img3")[0].files[0];
+				dataImg.append("img", imageProduct3);
+				var imageProduct4 = $("#img4s")[0].files[0];
+				dataImg.append("img", imageProduct4);
+
 				
 				
 				$.ajax({

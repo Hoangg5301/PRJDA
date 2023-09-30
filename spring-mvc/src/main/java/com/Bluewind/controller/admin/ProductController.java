@@ -1,5 +1,6 @@
 package com.Bluewind.controller.admin;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Bluewind.dto.admin.BrandDTO;
 import com.Bluewind.dto.admin.ProductDTO;
+import com.Bluewind.dto.admin.ProductTypeDTO;
+import com.Bluewind.service.IBrandService;
 import com.Bluewind.service.IProductService;
+import com.Bluewind.service.IProductTypeService;
 import com.Bluewind.util.MessageUtil;
 
 @Controller(value = "productControllerOfAdmin")
@@ -20,6 +25,12 @@ public class ProductController {
 	
 	@Autowired
 	private IProductService productService;
+	
+	@Autowired
+	private IProductTypeService productTypeService;
+	
+	@Autowired
+	private IBrandService brandService;
 	
 	@Autowired
 	private MessageUtil messageUtil;
@@ -47,6 +58,10 @@ public class ProductController {
 		
 		ModelAndView mav = new ModelAndView("admin/products/productEdit");
 		ProductDTO productDTO = new ProductDTO();
+		List<ProductTypeDTO> productTypeDTO = productTypeService.findAll();
+		List<BrandDTO> brandDTO = brandService.findAll();
+		mav.addObject("listProductType", productTypeDTO);
+		mav.addObject("listBrand", brandDTO);
 		if(id == null) {
 			mav.addObject("model", productDTO);
 			return mav;
