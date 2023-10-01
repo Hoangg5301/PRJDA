@@ -10,4 +10,6 @@ public interface ICartService {
 	CartDTO insert(CartDTO dto);
 	CartDTO update(CartDTO dto);
 	void delete(Integer id);
+
+	List<CartDTO> findAllByAccountID(Integer userID);
 }
