@@ -74,28 +74,28 @@ public class ProductService implements IProductService {
         return productDTO;
     }
 
-    @Override
-    @Transactional
-    public ProductDTO update(ProductDTO dto) {
-        ProductEntity oldEntity = productRepository.findOne(dto.getProductID());
-        oldEntity = productConvert.toEntity(dto, oldEntity);
-        oldEntity = productRepository.save(oldEntity);
-        ProductDTO productDTO = productConvert.toDTO(oldEntity);
-        //update Detail
-        Integer productId = dto.getProductID();
-        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize());
-        if (ProductDetailEntity == null) {
-            ProductDetailEntity = new ProductDetailEntity();
-            ProductDetailEntity.setProductID(productId);
-            ProductDetailEntity.setQuantity(dto.getQuantity());
-            ProductDetailEntity.setSize(dto.getSize());
-            ProductDetailRepository.save(ProductDetailEntity);
-        } else {
-            ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity() + dto.getQuantity());
-            ProductDetailRepository.save(ProductDetailEntity);
-        }
-        return productDTO;
-    }
+//    @Override
+//    @Transactional
+//    public ProductDTO update(ProductDTO dto) {
+//        ProductEntity oldEntity = productRepository.findOne(dto.getProductID());
+//        oldEntity = productConvert.toEntity(dto, oldEntity);
+//        oldEntity = productRepository.save(oldEntity);
+//        ProductDTO productDTO = productConvert.toDTO(oldEntity);
+//        //update Detail
+//        Integer productId = dto.getProductID();
+//        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize());
+//        if (ProductDetailEntity == null) {
+//            ProductDetailEntity = new ProductDetailEntity();
+//            ProductDetailEntity.setProductID(productId);
+//            ProductDetailEntity.setQuantity(dto.getQuantity());
+//            ProductDetailEntity.setSize(dto.getSize());
+//            ProductDetailRepository.save(ProductDetailEntity);
+//        } else {
+//            ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity() + dto.getQuantity());
+//            ProductDetailRepository.save(ProductDetailEntity);
+//        }
+//        return productDTO;
+//    }
 
     @Override
     @Transactional

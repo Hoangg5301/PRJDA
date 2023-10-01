@@ -3,6 +3,7 @@ package com.Bluewind.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.Bluewind.dto.admin.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,11 +44,6 @@ public class ProductDetailService implements IProductDetailService{
 	public void update(ProductDetailDTO dto) {
 		productDetailRepository.updateProductDetail(dto.getQuantity(), dto.getProductID(), dto.getSize());
 	}
-
-    @Override
-    public ProductDetailDTO insert(ProductDTO dto) {
-        return null;
-    }
 
     @Override
     public List<ProductDetailDTO> findAllByProductIds(List<Integer> ids) {
