@@ -8,10 +8,13 @@ import com.Bluewind.service.ICartService;
 import com.Bluewind.service.IProductDetailService;
 import com.Bluewind.service.IProductService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +82,26 @@ public class CartController {
 
 
         mav.addObject("cartProductDetails", cartProductDetails);
+        return mav;
+    }
+
+    @RequestMapping(value = "/create-cart", method = RequestMethod.POST)
+    private ModelAndView updateCart(@RequestBody CartDTO cartDTO) {
+        ModelAndView mav = new ModelAndView("user/products/detail");
+        Integer accountID = cartDTO.getAccountID();
+        Integer productID = cartDTO.getProductID();
+        Integer quantity = cartDTO.getQuantity();
+
+        CartDTO dto = iCartService.updateByCartIDAndAccountID(accountID, productID, quantity);
+        mav.addObject("cartSave", dto);
+        return mav;
+    }
+
+    @RequestMapping(value = "/cart", method = RequestMethod.DELETE)
+    private ModelAndView removeCart(@RequestBody Integer id) {
+        ModelAndView mav = new ModelAndView("user/carts/cart");
+        iCartService.deleteById(id);
+
         return mav;
     }
 }

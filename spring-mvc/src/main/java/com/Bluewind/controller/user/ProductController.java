@@ -1,15 +1,13 @@
 package com.Bluewind.controller.user;
 
-import com.Bluewind.dto.admin.PostDTO;
 import com.Bluewind.dto.admin.ProductDTO;
+import com.Bluewind.dto.admin.ProductDetailDTO;
 import com.Bluewind.service.IPostService;
+import com.Bluewind.service.IProductDetailService;
 import com.Bluewind.service.IProductService;
-import org.jboss.logging.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +18,11 @@ import java.util.List;
 public class ProductController {
 
     private final IProductService iProductService;
-    private final IPostService iPostService;
+    private final IProductDetailService iProductDetailService;
 
-    public ProductController(IProductService iProductService, IPostService iPostService) {
+    public ProductController(IProductService iProductService, IProductDetailService iProductDetailService) {
         this.iProductService = iProductService;
-        this.iPostService = iPostService;
+        this.iProductDetailService = iProductDetailService;
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.GET)
@@ -36,7 +34,12 @@ public class ProductController {
 
         List<ProductDTO> productDTOS = new ArrayList<>();
         if (productDTO != null && productDTO.getBrandID() != null) {
-             productDTOS = iProductService.findAllByBrandID(productDTO.getBrandID());
+            productDTOS = iProductService.findAllByBrandID(productDTO.getBrandID());
+        }
+
+        List<ProductDetailDTO> productDetailDTOS = new ArrayList<>();
+        if (productDTO != null) {
+            productDetailDTOS = iProductDetailService.findAllByProductIds(List.of(productDTO.getProductID()));
         }
 //
 //        List<ProductDTO> listP = iProductService.findLast();
@@ -44,7 +47,9 @@ public class ProductController {
 //
 //        mav.addObject("products", productDTOS);
 //        mav.addObject("product", listP);
+
         mav.addObject("product", productDTO);
+        mav.addObject("productDetailDTOS", productDetailDTOS);
         mav.addObject("productByBrand", productDTOS);
         return mav;
     }

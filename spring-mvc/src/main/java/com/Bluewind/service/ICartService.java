@@ -12,4 +12,9 @@ public interface ICartService {
 	void delete(Integer id);
 
 	List<CartDTO> findAllByAccountID(Integer userID);
+
+	void deleteById(Integer id);
+
+	CartDTO updateByCartIDAndAccountID(Integer accountID, Integer productID, Integer quantity);
+
 }

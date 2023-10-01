@@ -4,6 +4,19 @@
 
 <link href="<c:url value='template/user/assets/cartcustom/css/bootstrap.min.css'/>" rel="stylesheet"/>
 <link href="<c:url value='template/user/assets/cartcustom/css/all.min.css'/>" rel="stylesheet"/>
+<link href="<c:url value='template/fontawesome-free-6.4.2/css/all.css'/>" rel="stylesheet"/>
+
+<style>
+    .amount {
+        font-weight: bold;
+        color: green; /* Màu số tiền */
+    }
+</style>
+<script>
+    const amountElement = document.querySelector('.amount');
+    const amount = parseFloat(amountElement.innerText);
+    amountElement.innerText = amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+</script>
 
 <section class="pt-5 pb-5">
     <div class="container">
@@ -22,7 +35,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${cartProductDetails}" var="cart">
+                    <c:forEach items="${cartProductDetails}" var="cart" varStatus="loop">
+                        <input type="hidden" id = "idElement_${loop.index}" value="${cart.cartId}" />
                         <tr id="${cart.cartId}">
                             <td data-th="Product">
                                 <div class="row">
@@ -36,16 +50,15 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price" id="product-price">${cart.price}</td>
+                            <td data-th="Price" id="product-price" class="amount">${cart.price}</td>
                             <td data-th="Quantity">
-                                <input type="number" class="form-control form-control-lg text-center" value="${cart.quantity}">
+                                <input type="number" class="form-control form-control-lg text-center"
+                                       value="${cart.quantity}">
                             </td>
                             <td class="actions" data-th="">
                                 <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                        <i class="fas fa-sync"></i>
-                                    </button>
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="deleteById($('#idElement_${loop.index}').val())">
+                                        <c:url var="cartDelete" value="/cart" />
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -56,7 +69,7 @@
                 </table>
                 <div class="float-right text-right">
                     <h4>Tổng tiền:</h4>
-                    <h1>  </h1>
+                    <h1></h1>
                 </div>
             </div>
         </div>
@@ -71,8 +84,25 @@
         </div>
     </div>
 
-
     <script src="<c:url value='template/user/assets/cartcustom/js/bootstrap.min.js'/>"></script>
     <script src="<c:url value='template/user/assets/cartcustom/js/jquery-3.3.1.slim.min.js'/>"></script>
     <script src="<c:url value='template/user/assets/cartcustom/js/popper.min.js'/>"></script>
+
+    <script>
+        function deleteById(id) {
+            $.ajax({
+                url: '${cartDelete}',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify(id),
+                success: function () {
+                    window.location.href = '${cartDelete}';
+                },
+                error: function () {
+                    window.location.href = '${cartDelete}';
+                }
+            })
+
+        }
+    </script>
 </section>

@@ -66,35 +66,20 @@
                 <h2 class="fables-main-text-color font-20 semi-font">${product.productName}</h2>
                 <div class="row mb-5">
                     <div class="col-5 col-md-3">
-                        <span class="fables-fifth-text-color"> MÀU SẮC : </span>
+                        <span class="fables-fifth-text-color"> Kích cỡ : </span>
                     </div>
                     <div class="col-7 col-sm-6">
                         <ul class="nav">
-                            <li>
-                                <label class="fable-product-color">
-                                    <input type="radio" name="product-color">
-                                    <span class="checkmark" style="background-color: #E54D42;"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fable-product-color">
-                                    <input type="radio" name="product-color">
-                                    <span class="checkmark" style="background-color: #343434;"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fable-product-color">
-                                    <input type="radio" name="product-color" checked="checked">
-                                    <span class="checkmark" style="background-color: #E3C38E;"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="fable-product-color">
-                                    <input type="radio" name="product-color">
-                                    <span class="checkmark" style="background-color: #CDCDCD;"></span>
-                                </label>
-                            </li>
-
+                            <c:forEach var="productDetail" items="${productDetailDTOS}">
+                                <li>
+                                    <label class="fable-product-color">
+                                        <input id="productDetailId" type="radio" name="product-color"
+                                               value="${productDetail.productDetailID}">
+                                        <span class="checkmark" style="background-color: #E54D42;"></span>
+                                        <span>${productDetail.size}</span>
+                                    </label>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -116,18 +101,21 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-5 col-md-3">
-                        <span class="fables-fifth-text-color"> TÌNH TRẠNG : </span>
+                        <span class="fables-fifth-text-color"> Sản phẩm có săn : </span>
                     </div>
                     <div class="col-7 col-sm-6">
-                        <p>CÒN HÀNG</p>
+                        <p id="result"></p>
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col-6">
                         <a href="#"
-                           class="btn fables-second-border-color fables-second-text-color fables-btn-rouned fables-hover-btn-color font-14 px-4 py-2 semi-font">
+                           class="btn fables-second-border-color fables-second-text-color fables-btn-rouned fables-hover-btn-color font-14 px-4 py-2 semi-font"
+                           onclick="saveCart($('#productDetailId').val() ,$('#input-val').val())"
+                        >
+                            <c:url var="saveCart" value="/product?id=${product.productID}"/>
                             <span class="fables-iconcart"></span>
-                            <span class="fables-btn-value">ĐẶT MUA</span></a>
+                            <span class="fables-btn-value">THÊM VÀO GIỎ HÀNG</span></a>
                     </div>
                     <div class="col-6 text-right">
                         <a href=""
@@ -201,10 +189,10 @@
                         </div>
                         <h2
                                 class="fables-forth-text-color text-center bold-font table-title font-17 fables-third-after position-relative">
-                            ${p.price}</h2>
+                                ${p.price}</h2>
                         <p class="fables-forth-text-color my-4 px-4 line-height-large font-15"
                            style="height: 60px; overflow: hidden;">
-                            ${p.productName}
+                                ${p.productName}
                         </p>
                         <p class="fables-product-info"><a href="#"
                                                           class="btn fables-second-border-color fables-second-text-color fables-btn-rouned fables-hover-btn-color font-14 p-2 px-2 px-xl-4">
@@ -219,3 +207,33 @@
 </div>
 
 <script src="<c:url value='template/user/assets/vendor/jquery/jquery-3.3.1.min.js'/>"></script>
+
+<script>
+    const accountId = localStorage.getItem('accountId');
+
+    function total() {
+        return '${productDetailDTOS}'.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    const resultParagraph = document.getElementById("result");
+    resultParagraph.textContent = total();
+
+    const createCart = (productID, quantity) => {
+        return {accountID: accountId, productID: productID, quantity: quantity};
+    }
+
+    function saveCart(productID, quantity) {
+        $.ajax({
+            url: '/spring_mvc_war/create-cart',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(createCart(productID, quantity)),
+            success: function () {
+                window.location.href = '${saveCart}';
+            },
+            error: function () {
+                window.location.href = '${saveCart}';
+            }
+        })
+    }
+</script>
