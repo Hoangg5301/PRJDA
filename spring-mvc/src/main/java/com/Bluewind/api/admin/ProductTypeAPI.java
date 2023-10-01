@@ -25,7 +25,7 @@ public class ProductTypeAPI {
 		return producTypeService.update(productTypeDTO);
 	}
 	@DeleteMapping("/api/producttype")
-	public void deleteProductType(@RequestBody Integer id) {
-		producTypeService.delete(id);
+	public void deleteProductType(@RequestBody Integer idProductType) {
+		producTypeService.delete(idProductType);
 	}
 }

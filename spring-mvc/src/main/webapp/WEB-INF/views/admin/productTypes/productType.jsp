@@ -59,9 +59,9 @@
                                                     <span class="text">Sửa</span>
                                                 </a>
                                                 
-                                             <c:url var="productTypeDelete" value="/api/prducttype" />
+                                             <c:url var="productTypeDelete" value="/api/producttype" />
 
-                                                <button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete($('#item.typeID').val())">
+                                                <button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete($('#idElement_${loop.index }').val())">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
