@@ -61,7 +61,7 @@ public class CartController {
         List<CartProductDetail> cartProductDetails = new ArrayList<>();
 
         for (CartDTO dto : cartDTOS) {
-            ProductDetailDTO productDetailDTO = productDetailDTOS.stream().filter(p -> p.getProductID() == dto.getProductID()).findFirst().get();
+            ProductDetailDTO productDetailDTO = productDetailDTOS.stream().filter(p -> p.getProductDetailID() == dto.getProductID()).findFirst().get();
             ProductDTO productDTO = productDTOS.stream().filter(p -> Objects.equals(p.getProductID(), productDetailDTO.getProductID())).findFirst().get();
 
             CartProductDetail cartProductDetail = CartProductDetail.builder()

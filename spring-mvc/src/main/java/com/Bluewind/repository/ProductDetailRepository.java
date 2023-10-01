@@ -8,6 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.ProductDetailEntity;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface ProductDetailRepository extends JpaRepository<ProductDetailEntity, Integer>{
@@ -21,10 +25,12 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 	@Query("select pd from ProductDetailEntity pd where pd.productID IN ?1")
 	List<ProductDetailEntity> findAllByProductIds(List<Integer> ids);
 
+	List<ProductDetailEntity> findByProductDetailIDIsIn(Collection<Integer> productDetailID);
+
     @Modifying
 	@Query("update from ProductDetailEntity p set p.quantity = ?1 where p.productID = ?2 and p.size = ?3")
 	void updateProductDetail(Integer quantity, Integer id, String size);
-    
+
     @Query("select p from ProductDetailEntity p where p.productID = ?1 and p.size = ?2")
 	ProductDetailEntity findByProduct(Integer id, String size);
 }
