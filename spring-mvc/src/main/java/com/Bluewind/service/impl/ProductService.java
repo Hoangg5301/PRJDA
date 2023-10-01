@@ -27,7 +27,7 @@ public class ProductService implements IProductService {
     private ProductRepository productRepository;
 
     @Autowired
-    private BrandRepository BrandRepository;
+    private BrandRepository brandRepository;
 
     @Autowired
     private ProductDetailRepository ProductDetailRepository;
@@ -159,7 +159,8 @@ public class ProductService implements IProductService {
 		List<ProductDTO> listProductOutDTO = new ArrayList<>();
 		for(ProductDTO productDTO: listProductInDTO.getListResult()) {
 			Integer id = productDTO.getBrandID();
-			BrandEntity brandEntity = BrandRepository.findOne(id);if (brandEntity != null) {
+			BrandEntity brandEntity = brandRepository.findOne(id);
+            if (brandEntity != null) {
                 productDTO.setBrandName(brandEntity.getBrandName());
                 listProductOutDTO.add(productDTO);
             }

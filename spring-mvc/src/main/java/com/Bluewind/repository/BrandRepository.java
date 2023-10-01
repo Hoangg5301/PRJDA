@@ -20,4 +20,6 @@ public interface BrandRepository extends JpaRepository<BrandEntity, Integer>{
 	//lấy bản ghi cuối cùng.
 	@Query("select MAX(b.brandID) from BrandEntity b order by b.brandID DESC")
 	Integer findLastId();
+
+	BrandEntity findByBrandID(Integer brandID);
 }

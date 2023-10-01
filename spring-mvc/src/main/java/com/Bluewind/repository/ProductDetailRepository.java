@@ -19,9 +19,6 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 	@Modifying
 	@Query("delete from ProductDetailEntity p where p.productID = ?1")
 	Integer deleteProduct(Integer id);
-	
-	@Query("select p from ProductDetailEntity p where p.productID = ?1 and p.size = ?2")
-	ProductDetailEntity findByProduct(Integer idproduct, String size);
 
 	@Query("select pd from ProductDetailEntity pd where pd.productID IN ?1")
 	List<ProductDetailEntity> findAllByProductIds(List<Integer> ids);
