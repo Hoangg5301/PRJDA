@@ -1,4 +1,10 @@
 /.metadata/
+<<<<<<< HEAD
 */target
 */target/*
 /spring-mvc/target
+=======
+/.idea
+
+*/target
+>>>>>>> b0e4b296f9fb0217e9ec5aa10f655597e21f4fa8

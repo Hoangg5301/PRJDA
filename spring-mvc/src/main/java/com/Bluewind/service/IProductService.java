@@ -20,4 +20,6 @@ public interface IProductService {
 
 	List<ProductDTO> findAllByBrandID(Integer brandID);
 
+	List<ProductDTO> findAllByProductIds(List<Integer> ids);
+
 }

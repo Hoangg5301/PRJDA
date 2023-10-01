@@ -83,10 +83,9 @@ public class ProductService implements IProductService {
         ProductDTO productDTO = productConvert.toDTO(oldEntity);
         //update Detail
         Integer productId = dto.getProductID();
-        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize(), dto.getColor());
+        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize());
         if (ProductDetailEntity == null) {
             ProductDetailEntity = new ProductDetailEntity();
-            ProductDetailEntity.setColor(dto.getColor());
             ProductDetailEntity.setProductID(productId);
             ProductDetailEntity.setQuantity(dto.getQuantity());
             ProductDetailEntity.setSize(dto.getSize());
@@ -106,17 +105,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void uploadAdd(String path1, String path2, String path3, String path4) {
-        Integer id = productRepository.findLastId();
-        productRepository.uploadAdd(path1, path2, path3, path4, id);
-
-    }
+    @Transactional
+	public void uploadAdd(String path1, String path2, String path3, String path4) {
+		Integer id = productRepository.findLastId();
+		productRepository.uploadAdd(path1, path2, path3, path4, id);
+		
+	}
 
     @Override
-    public void uploadUpdate(String path1, String path2, String path3, String path4, Integer id) {
-        productRepository.uploadUpdate(path1, path2, path3, path4, id);
-
-    }
+    @Transactional
+	public void uploadUpdate(String path1, String path2, String path3, String path4, Integer id) {
+		productRepository.uploadUpdate(path1, path2, path3, path4, id);
+		
+	}
 
     @Override
     public List<ProductDTO> findLast() {
@@ -141,18 +142,35 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<ProductDTO> findBrandName(ProductDTO listProductInDTO) {
-        List<ProductDTO> listProductOutDTO = new ArrayList<>();
+    public List<ProductDTO> findAllByProductIds(List<Integer> ids) {
+        List<ProductDTO> productDTOS = new ArrayList<>();
 
-        for (ProductDTO productDTO : listProductInDTO.getListResult()) {
-            Integer id = productDTO.getBrandID();
-            BrandEntity brandEntity = BrandRepository.findOne(id);
-            if (brandEntity != null) {
+        List<ProductEntity> productEntityList = productRepository.findAllByProductIds(ids);
+        if (!productEntityList.isEmpty()) {
+            for (ProductEntity entity : productEntityList) {
+                productDTOS.add(productConvert.toDTO(entity));
+            }
+        }
+        return productDTOS;
+    }
+
+    @Override
+	public List<ProductDTO> findBrandName(ProductDTO listProductInDTO) {
+		List<ProductDTO> listProductOutDTO = new ArrayList<>();
+		for(ProductDTO productDTO: listProductInDTO.getListResult()) {
+			Integer id = productDTO.getBrandID();
+			BrandEntity brandEntity = BrandRepository.findOne(id);if (brandEntity != null) {
                 productDTO.setBrandName(brandEntity.getBrandName());
                 listProductOutDTO.add(productDTO);
             }
-        }
-        return listProductOutDTO;
-    }
+		}
+		return listProductOutDTO;
+	}
 
+	@Override
+	public Integer findlastID() {
+
+		return productRepository.findLastId();
+	}
+	
 }
