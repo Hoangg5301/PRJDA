@@ -45,11 +45,6 @@ public class ProductDetailService implements IProductDetailService{
 	}
 
     @Override
-    public ProductDetailDTO insert(ProductDTO dto) {
-        return null;
-    }
-
-    @Override
     public List<ProductDetailDTO> findAllByProductIds(List<Integer> ids) {
         List<ProductDetailDTO> productDetailDTOS = new ArrayList<>();
 

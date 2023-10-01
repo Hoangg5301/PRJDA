@@ -22,9 +22,6 @@ public class CartEntity {
 	@Column(name = "quantity")
 	private int quantity;
 
-	@OneToMany(mappedBy = "cartEntity")
-	private List<BrandEntity> brandEntities;
-
 	public int getQuantity() {
 		return quantity;
 	}

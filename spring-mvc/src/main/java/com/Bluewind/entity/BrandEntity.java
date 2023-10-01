@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name="brand")
 public class BrandEntity{
 
-
-	@ManyToOne(targetEntity = BrandEntity.class)
-	private CartEntity cartEntity;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idbrand")
