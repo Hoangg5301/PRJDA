@@ -1,15 +1,13 @@
 package com.Bluewind.repository;
 
-import org.jboss.logging.annotations.Param;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.ProductDetailEntity;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Repository
 public interface ProductDetailRepository extends JpaRepository<ProductDetailEntity, Integer>{
@@ -24,6 +22,9 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 	List<ProductDetailEntity> findAllByProductIds(List<Integer> ids);
 
     @Modifying
-	@Query("update from ProductDetailEntity p set quantity = ?1 where p.productID = ?2 and p.size = ?3")
+	@Query("update from ProductDetailEntity p set p.quantity = ?1 where p.productID = ?2 and p.size = ?3")
 	void updateProductDetail(Integer quantity, Integer id, String size);
+    
+    @Query("select p from ProductDetailEntity p where p.productID = ?1 and p.size = ?2")
+	ProductDetailEntity findByProduct(Integer id, String size);
 }

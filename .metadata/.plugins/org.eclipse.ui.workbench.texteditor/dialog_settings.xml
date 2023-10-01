@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="deleteById"/>
+		<item key="selection" value="productTypeDelete"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="deletebyid"/>
+			<item value="productTypeDelete"/>
+			<item value="brandDisplayUrl"/>
 			<item value="idElement"/>
+			<item value="brandApiUrl"/>
+			<item value="typeID"/>
+			<item value="brandAdd"/>
+			<item value="insert"/>
+			<item value="deletebyid"/>
 			<item value="brandUpdate"/>
 			<item value="brandID"/>
-			<item value="brandApiUrl"/>
 			<item value="10000000"/>
 			<item value="productID"/>
 			<item value="uploadUrl"/>
-			<item value="brandDisplayUrl"/>
 			<item value="form-add-brand"/>
 			<item value="part"/>
-			<item value="datatable"/>
-			<item value="brand_dialog_add"/>
-			<item value="additionalProperties"/>
-			<item value="brandAdd"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 			<item value="path"/>
 		</list>
 	</section>

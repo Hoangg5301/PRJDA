@@ -35,9 +35,9 @@
                                     </thead>
                                     <tbody>
                                     
-                                    	<c:forEach var="item" items="${model.listResult}" >
+                                    	<c:forEach var="item" items="${model.listResult}" varStatus="loop">
                                         <tr>
-                                        	<input type="hidden" id = "idElement" value="${item.brandID}" />
+                                        	<input type="hidden" id = "idElement_${loop.index}" value="${item.brandID}" />
                                         	<c:url var="deletebyid" value ="/api/brand" />
                                         	<td>${item.brandName}</td>
 											<td>${item.brandImg}</td>
@@ -55,7 +55,7 @@
                                              <c:url var="brandDelete" value="/api/brand">
 												<c:param name="id" value="${item.brandID}"/>
 											</c:url>
-											<button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete()">
+											<button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete($('#idElement_${loop.index}').val())">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -79,7 +79,7 @@
 
 <script>
 	
-	function warningBeforeDelete(){
+	function warningBeforeDelete(id){
 		swal({
 			  title: "Xác nhận",
 			  text: "Bạn có muốn thực hiện yêu cầu này không",
@@ -93,7 +93,6 @@
 			  closeOnCancel: false
 			}).then(function(isConfirm) {
 			  if (isConfirm) {
-			    	var id = $("#idElement").val();
 			    	deleteById(id);
 			  } 
 			});

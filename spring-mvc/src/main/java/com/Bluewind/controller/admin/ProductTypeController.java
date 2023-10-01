@@ -43,7 +43,7 @@ public class ProductTypeController {
 	@RequestMapping(value = "/home-producttypeupdate-admin", method = RequestMethod.GET)
 	public ModelAndView getUpdate(@RequestParam(value ="id", required = false) Integer id) {
 		
-		ModelAndView mav = new ModelAndView("");
+		ModelAndView mav = new ModelAndView("admin/productTypes/productTypeEdit");
 		ProductTypeDTO productTypeDTO = new ProductTypeDTO();
 		if(id == null) {
 			mav.addObject("model", productTypeDTO);

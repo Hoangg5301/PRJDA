@@ -11,15 +11,17 @@
 				<div>
 					<label><b>Tên danh mục:</b></label>
 					<form:input path="typeName" />
-					<form:input path="typeDetail" />
+					<hr/>
+					<label><b>Mô tả:</b></label>
+					<form:textarea path="typeDetail" rows="5" cols="50" id="typeDetail" />
 					<input id="typeID" name="typeID" type="hidden" value="${model.typeID}" />
 				</div>
 			</form:form>
 							
-				<c:if test="${not empty model.brandID}">
+				<c:if test="${not empty model.typeID}">
 					<button type="button" id="brand_dialog_add">cập nhật</button>
 				</c:if>
-				<c:if test="${empty model.brandID}">
+				<c:if test="${empty model.typeID}">
 					<button type="button" id="brand_dialog_add">thêm</button>
 				</c:if>
 				
@@ -41,10 +43,8 @@
 				});
 				if(id ==""){
 					addBrand(data);
-					addImg();
 				}else{
 					updateBrand(data);
-					addImg();
 				}
 				console.log(formData);
 			});

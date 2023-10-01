@@ -7,11 +7,12 @@
 		<div class="alert alert-${alert}">
 			"${message}"
 		</div>
+		
+		<c:url var="producttype" value = "/home-producttype-admin" />
+		<c:url var="productTypeupdate" value = "/home-producttypeupdate-admin" />
+
 	</c:if>
 		<div id="wrapper">
-
-        <!-- Sidebar -->
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -31,8 +32,8 @@
                             <h6 class="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
                         </div>
                         <div class="card-body">
-                        <c:url var="brandAdd" value ="home-brandupdate-admin" />
-							<div style="align-items: end; justify-content: end;;"><button id="brand_add" type="button"><a href="${brandAdd}">Thêm</a></button></div>
+                        <c:url var="brandAdd" value ="home-producttypeupdate-admin" />
+							<div style="align-items: end; justify-content: end;"><button id="brand_add" type="button"><a href="${brandAdd}">Thêm</a></button></div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -43,11 +44,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="item" items="${model.listResult}" >
+                                        <c:forEach var="item" items="${model.listResult}" varStatus="loop" >
                                         <tr>
                                             <td>${item.typeName}</td>
-                                            <td>${item.typeName}</td>
-                                            <input id="idElement" value="${item.typeID}" />
+                                            <td>${item.typeDetail}</td>
+                                            <input type="hidden" id="idElement_${loop.index }" value="${item.typeID}" />
                                             <c:url var="productTypeUpdate" value="home-producttypeupdate-admin">
 												<c:param name="id" value="${item.typeID}"/>
 											</c:url>
@@ -60,7 +61,7 @@
                                                 
                                              <c:url var="productTypeDelete" value="/api/prducttype" />
 
-                                                <button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete()">
+                                                <button class="btn btn-danger btn-icon-split" type="button" onclick= "warningBeforeDelete($('#item.typeID').val())">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -90,7 +91,7 @@
     
     <script>
 	
-	function warningBeforeDelete(){
+	function warningBeforeDelete(id){
 		swal({
 			  title: "Xác nhận",
 			  text: "Bạn có muốn thực hiện yêu cầu này không",
@@ -104,9 +105,11 @@
 			  closeOnCancel: false
 			}).then(function(isConfirm) {
 			  if (isConfirm) {
-			    	var id = $("#idElement").val();
 			    	deleteById(id);
-			  } 
+			  }
+			  else{
+				  window.location.href = '${producttype}';
+			  }
 			});
 	}
 	
@@ -117,11 +120,11 @@
 			contentType: 'application/json',
             data: JSON.stringify(id),
 			success: function(result){
-				window.location.href = '${brandDisplayUrl}?message=delete_success';
+				window.location.href = '${producttype}?message=delete_success';
 			},
 			
 			error: function (error) {
-            	window.location.href = '${brandDisplayUrl}?message=error_system';
+            	window.location.href = '${producttype}?message=error_system';
             }
 		})
 		

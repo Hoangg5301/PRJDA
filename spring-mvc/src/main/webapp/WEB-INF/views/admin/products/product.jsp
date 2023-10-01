@@ -37,8 +37,8 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        	<c:forEach var="item" items="${model.listResult}" >
-                                        	<input type="hidden" value = "${item.productID}" id="idElement" name="idElement" />
+                                        	<c:forEach var="item" items="${model.listResult}" varStatus="loop">
+                                        	<input type="hidden" value = "${item.productID}" id="idElement_${loop.index}" name="idElement" />
                                         	<td>${item.productName}</td>
                                         	<td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
                                         	<td>${item.price} VNĐ</td>
@@ -57,7 +57,7 @@
                                              <c:url var="brandDelete" value="/api/product">
 												<c:param name="id" value="${item.productID}"/>
 											</c:url>
-                                                <button onclick="warningBeforeDelete()" type="button" class="btn btn-danger btn-icon-split">
+                                                <button onclick="warningBeforeDelete($('#idElement_${loop.index}').val())" type="button" class="btn btn-danger btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -77,7 +77,7 @@
 </div>
 <script>
 	
-	function warningBeforeDelete(){
+	function warningBeforeDelete(id){
 		swal({
 			  title: "Xác nhận",
 			  text: "Bạn có muốn thực hiện yêu cầu này không",
@@ -91,7 +91,6 @@
 			  closeOnCancel: false
 			}).then(function(isConfirm) {
 			  if (isConfirm) {
-			    	var id = $("#idElement").val();
 			    	deleteById(id);
 			  } 
 			});
