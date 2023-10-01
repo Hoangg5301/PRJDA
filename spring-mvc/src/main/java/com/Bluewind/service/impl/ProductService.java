@@ -145,6 +145,9 @@ public class ProductService implements IProductService {
     public List<ProductDTO> findAllByProductIds(List<Integer> ids) {
         List<ProductDTO> productDTOS = new ArrayList<>();
 
+        if (ids.isEmpty()) {
+            return new ArrayList<>();
+        }
         List<ProductEntity> productEntityList = productRepository.findAllByProductIds(ids);
         if (!productEntityList.isEmpty()) {
             for (ProductEntity entity : productEntityList) {

@@ -49,7 +49,7 @@ public class ProductDetailService implements IProductDetailService{
         List<ProductDetailDTO> productDetailDTOS = new ArrayList<>();
 
         if (!ids.isEmpty()) {
-            List<ProductDetailEntity> productDetailEntities = productDetailRepository.findAllByProductIds(ids);
+            List<ProductDetailEntity> productDetailEntities = productDetailRepository.findByProductDetailIDIsIn(ids);
             if (!productDetailEntities.isEmpty()) {
                 for (ProductDetailEntity detail : productDetailEntities) {
                     productDetailDTOS.add(productDetailConvert.toDTO(detail));
