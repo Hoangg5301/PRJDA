@@ -58,4 +58,14 @@ public class PostService implements IPostService{
 		postRepository.delete(id);
 	}
 
+	@Override
+	public List<PostDTO> getList() {
+		List<PostDTO> postDTOS = new ArrayList<>();
+		List<PostEntity> postEntities = postRepository.findTop3ByOrderByPostID();
+		for (PostEntity p : postEntities) {
+			postDTOS.add(postConvert.toDTO(p));
+		}
+		return postDTOS;
+	}
+
 }

@@ -1,1 +1,4 @@
 /.metadata/
+*/target
+*/target/*
+/spring-mvc/target
