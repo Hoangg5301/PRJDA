@@ -5,6 +5,7 @@
 
 <!-- Custom styles for this template -->
 
+<c:url var="deletebyid" value ='/api/product' />
 <div class="margin-content-admin">
 	<c:if test="${not empty message }">
 		<div class="alert alert-${alert}">
@@ -37,13 +38,14 @@
                                     <tbody>
                                         <tr>
                                         	<c:forEach var="item" items="${model.listResult}" >
+                                        	<input type="hidden" value = "${item.productID}" id="idElement" name="idElement" />
                                         	<td>${item.productName}</td>
-                                        	<td><img src="<c:url value ='${item.img1}' />" /></td>
+                                        	<td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
                                         	<td>${item.price} VNĐ</td>
                                         	<td>${item.quantity}</td>
                                         	<td>${item.brandName}</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
+                                        	<c:url var="brandUpdate" value="home-productupdate-admin">
+												<c:param name="id" value="${item.productID}"/>
 											</c:url>
                                         	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
                                                     <span class="icon text-white-50">
@@ -52,15 +54,15 @@
                                                     <span class="text">Sửa</span>
                                                 </a>
                                                 
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
+                                             <c:url var="brandDelete" value="/api/product">
+												<c:param name="id" value="${item.productID}"/>
 											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
+                                                <button onclick="warningBeforeDelete()" type="button" class="btn btn-danger btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
                                                     <span class="text">Xóa</span>
-                                                </a>
+                                                </button>
                                              </td>
                                         </tr>
                                         </c:forEach>
@@ -73,3 +75,42 @@
                 </div>
 	</div>
 </div>
+<script>
+	
+	function warningBeforeDelete(){
+		swal({
+			  title: "Xác nhận",
+			  text: "Bạn có muốn thực hiện yêu cầu này không",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonClass: "btn-success",
+			  cancelButtonClass: "btn-danger",
+			  confirmButtonText: "xác nhận",
+			  cancelButtonText: "huỷ bỏ",
+			  closeOnConfirm: false,
+			  closeOnCancel: false
+			}).then(function(isConfirm) {
+			  if (isConfirm) {
+			    	var id = $("#idElement").val();
+			    	deleteById(id);
+			  } 
+			});
+	}
+	
+	function deleteById(id){
+		$.ajax({
+			url: '${deletebyid}',
+			type: 'DELETE',
+			contentType: 'application/json',
+            data: JSON.stringify(id),
+			success: function(result){
+				window.location.href = '${brandDisplayUrl}?message=delete_success';
+			},
+			
+			error: function (error) {
+            	window.location.href = '${brandDisplayUrl}?message=error_system';
+            }
+		})
+		
+	}
+</script>

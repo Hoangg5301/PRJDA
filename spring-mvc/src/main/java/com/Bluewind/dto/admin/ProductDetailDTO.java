@@ -3,7 +3,6 @@ package com.Bluewind.dto.admin;
 public class ProductDetailDTO {
 	private Integer productDetailID;
 	private Integer productID;
-	private String color;
 	private String size;
 	private Integer quantity;
 	public Integer getProductDetailID() {
@@ -17,12 +16,6 @@ public class ProductDetailDTO {
 	}
 	public void setProductID(Integer productID) {
 		this.productID = productID;
-	}
-	public String getColor() {
-		return color;
-	}
-	public void setColor(String color) {
-		this.color = color;
 	}
 	public String getSize() {
 		return size;

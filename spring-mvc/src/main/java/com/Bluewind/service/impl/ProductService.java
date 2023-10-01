@@ -66,18 +66,10 @@ public class ProductService implements IProductService{
 		ProductDTO productDTO = productConvert.toDTO(oldEntity);
 		//update Detail
 		Integer productId = dto.getProductID();
-		ProductDetailEntity ProductDetailEntity =  ProductDetailRepository.findByProduct(productId, dto.getSize(), dto.getColor());
-		if(ProductDetailEntity == null) {
-			ProductDetailEntity = new ProductDetailEntity();
-			ProductDetailEntity.setColor(dto.getColor());
-			ProductDetailEntity.setProductID(productId);
-			ProductDetailEntity.setQuantity(dto.getQuantity());
-			ProductDetailEntity.setSize(dto.getSize());
-			ProductDetailRepository.save(ProductDetailEntity);
-		}else {
-			ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity()+ dto.getQuantity());
-			ProductDetailRepository.save(ProductDetailEntity);
-		}
+		ProductDetailEntity ProductDetailEntity =  ProductDetailRepository.findByProduct(productId, dto.getSize());
+		ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity()+ dto.getQuantity());
+		ProductDetailRepository.save(ProductDetailEntity);
+
 		return productDTO;
 	}
 
@@ -89,6 +81,7 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
+	@Transactional
 	public void uploadAdd(String path1, String path2, String path3, String path4) {
 		Integer id = productRepository.findLastId();
 		productRepository.uploadAdd(path1, path2, path3, path4, id);
@@ -96,6 +89,7 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
+	@Transactional
 	public void uploadUpdate(String path1, String path2, String path3, String path4, Integer id) {
 		productRepository.uploadUpdate(path1, path2, path3, path4, id);
 		
@@ -104,7 +98,6 @@ public class ProductService implements IProductService{
 	@Override
 	public List<ProductDTO> findBrandName(ProductDTO listProductInDTO) {
 		List<ProductDTO> listProductOutDTO = new ArrayList<>();
-		
 		for(ProductDTO productDTO: listProductInDTO.getListResult()) {
 			Integer id = productDTO.getBrandID();
 			BrandEntity brandEntity = BrandRepository.findOne(id);
@@ -112,6 +105,12 @@ public class ProductService implements IProductService{
 			listProductOutDTO.add(productDTO);
 		}
 		return listProductOutDTO;
+	}
+
+	@Override
+	public Integer findlastID() {
+		
+		return productRepository.findLastId();
 	}
 	
 }

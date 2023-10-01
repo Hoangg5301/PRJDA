@@ -32,7 +32,6 @@
 				
 				<button type="button" id="brand_dialog_cancel"><a href="<c:url value ="/home-brand-admin" />">Huỷ bỏ</a></button>
 			
-
 		</div>
 
 		<script>

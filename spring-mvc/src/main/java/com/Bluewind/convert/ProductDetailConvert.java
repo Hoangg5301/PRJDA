@@ -11,7 +11,6 @@ public class ProductDetailConvert {
 		ProductDetailDTO productDetailDTO = new ProductDetailDTO();
 		productDetailDTO.setProductDetailID(productDetailEntity.getProductDetailID());
 		productDetailDTO.setProductID(productDetailEntity.getProductID());
-		productDetailDTO.setColor(productDetailEntity.getColor());
 		productDetailDTO.setSize(productDetailEntity.getSize());
 		productDetailDTO.setQuantity(productDetailEntity.getQuantity());
 		return productDetailDTO;
@@ -20,7 +19,6 @@ public class ProductDetailConvert {
 	public ProductDetailEntity  toEntity(ProductDetailDTO productDetailDTO) {
 		ProductDetailEntity productDetailEntity  = new ProductDetailEntity();
 		productDetailEntity.setProductID(productDetailDTO.getProductID());
-		productDetailEntity.setColor(productDetailDTO.getColor());
 		productDetailEntity.setSize(productDetailDTO.getSize());
 		productDetailEntity.setQuantity(productDetailDTO.getQuantity());
 		return productDetailEntity;
@@ -29,7 +27,6 @@ public class ProductDetailConvert {
 	public ProductDetailEntity toEntity(ProductDetailDTO productDetailDTO, ProductDetailEntity oldEntity) {
 		oldEntity.setProductID(productDetailDTO.getProductID());
 		oldEntity.setSize(productDetailDTO.getSize());
-		oldEntity.setColor(productDetailDTO.getColor());
 		oldEntity.setQuantity(productDetailDTO.getQuantity());
 		return oldEntity;
 	}

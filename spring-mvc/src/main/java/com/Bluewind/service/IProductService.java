@@ -8,6 +8,7 @@ import com.Bluewind.dto.admin.ProductDTO;
 public interface IProductService {
 	List<ProductDTO> findAll();
 	List<ProductDTO> findBrandName(ProductDTO dto);
+	Integer findlastID();
 	ProductDTO findById(Integer id);
 	ProductDTO insert(ProductDTO dto);
 	ProductDTO update(ProductDTO dto);

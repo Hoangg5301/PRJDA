@@ -21,9 +21,6 @@ public class ProductDetailEntity {
 	@Column(name = "size")
 	private String size;
 	
-	@Column(name = "color")
-	private String color;
-	
 	@Column(name = "quantity")
 	private Integer quantity;
 
@@ -43,13 +40,6 @@ public class ProductDetailEntity {
 		this.size = size;
 	}
 
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
 
 	public Integer getQuantity() {
 		return quantity;

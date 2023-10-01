@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Bluewind.dto.admin.ProductDTO;
+import com.Bluewind.dto.admin.ProductDetailDTO;
+import com.Bluewind.service.IProductDetailService;
 import com.Bluewind.service.IProductService;
 
 @RestController(value = "productAPIOfAdmin")
@@ -21,9 +23,19 @@ public class ProductAPI {
 	@Autowired
 	private IProductService productService;
 	
+	@Autowired
+	private IProductDetailService productDetailService;
+	
 	@PostMapping("/api/product")
 	public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
-		return productService.insert(productDTO);
+		ProductDTO productDTOOut =  productService.insert(productDTO);
+		Integer idLast = productService.findlastID();
+		ProductDetailDTO productDetailDTO = new ProductDetailDTO();
+		productDetailDTO.setProductID(idLast);
+		productDetailDTO.setQuantity(productDTO.getQuantity());
+		productDetailDTO.setSize(productDTO.getSize());
+		productDetailService.insert(productDetailDTO);
+		return productDTOOut;
 	}
 	@PutMapping("/api/product")
 	public ProductDTO updateProduct(@RequestBody ProductDTO productDTO) {

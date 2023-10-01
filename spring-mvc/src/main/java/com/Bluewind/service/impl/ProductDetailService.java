@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Bluewind.convert.ProductDetailConvert;
-import com.Bluewind.dto.admin.ProductDTO;
 import com.Bluewind.dto.admin.ProductDetailDTO;
 import com.Bluewind.entity.ProductDetailEntity;
 import com.Bluewind.repository.ProductDetailRepository;
@@ -33,10 +32,16 @@ public class ProductDetailService implements IProductDetailService{
 		
 		return listProductDetailDTO;
 	}
-	
-	@Override
-	public ProductDetailDTO insert(ProductDTO dto) {
-		
-	}
 
+	@Override
+	public ProductDetailDTO insert(ProductDetailDTO dto) {
+		ProductDetailEntity productDetailEntity = productDetailConvert.toEntity(dto);
+		
+		return productDetailConvert.toDTO(productDetailRepository.save(productDetailEntity));
+	}
+	
+	public void update(ProductDetailDTO dto) {
+		productDetailRepository.updateProductDetail(dto.getQuantity(), dto.getProductID(), dto.getSize());
+	}
+	
 }
