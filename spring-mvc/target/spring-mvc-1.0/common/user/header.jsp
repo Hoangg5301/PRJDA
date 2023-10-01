@@ -1,3 +1,4 @@
+<%@ include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link href="<c:url value='template/user/custom/css/customuser.css'/>" rel="stylesheet" type="text/css"/>
@@ -129,15 +130,13 @@
                 <div class="col-12 col-md-2 col-lg-3 pr-md-0 icons-header-mobile icon-margin">
 
                     <div class="fables-header-icons">
-                        <div class="dropdown">
                             <a href="<c:url value='/cart'/>"
-                                class="fables-third-text-color dropdown-toggle right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                class="fables-third-text-color  right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"
+                                aria-haspopup="true"
                                 aria-expanded="false">
                                 <span class="fables-iconcart-icon font-20"></span>
                                 <span class="fables-cart-number fables-second-background-color text-center">3</span>
                             </a>
-                        </div>
 
 
                         <a href="#"

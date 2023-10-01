@@ -36,7 +36,23 @@ public class ProductDetailService implements IProductDetailService{
 	
 	@Override
 	public ProductDetailDTO insert(ProductDTO dto) {
-		
+		return null;
+	}
+
+	@Override
+	public List<ProductDetailDTO> findAllByProductIds(List<Integer> ids) {
+		List<ProductDetailDTO> productDetailDTOS = new ArrayList<>();
+
+		if (!ids.isEmpty()) {
+			List<ProductDetailEntity> productDetailEntities = productDetailRepository.findAllByProductIds(ids);
+			if (!productDetailEntities.isEmpty()) {
+				for (ProductDetailEntity detail : productDetailEntities) {
+				productDetailDTOS.add(productDetailConvert.toDTO(detail));
+
+				}
+			}
+		}
+		return productDetailDTOS;
 	}
 
 }

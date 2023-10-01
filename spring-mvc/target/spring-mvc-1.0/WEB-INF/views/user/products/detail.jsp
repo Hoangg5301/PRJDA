@@ -172,12 +172,6 @@
                         <a class="fables-single-item nav-link fables-forth-text-color fables-second-active fables-second-hover-color fables-forth-after px-3 px-md-5 font-15 semi-font border-0 active rounded-0 py-3"
                            id="nav-desc-tab" data-toggle="tab" href="#nav-desc" role="tab" aria-controls="nav-desc"
                            aria-selected="true">MÔ TẢ</a>
-                        <a class="fables-single-item nav-link fables-forth-text-color fables-second-active fables-second-hover-color fables-forth-after border-0 px-3 px-md-5 font-15 semi-font rounded-0 py-3"
-                           id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info"
-                           aria-selected="false">THÔNG TIN CHI TIẾT</a>
-                        <a class="fables-single-item nav-link fables-forth-text-color fables-second-active fables-second-hover-color fables-forth-after border-0 px-3 px-md-5 font-15 semi-font rounded-0 py-3"
-                           id="nav-review-tab" data-toggle="tab" href="#nav-review" role="tab"
-                           aria-controls="nav-review" aria-selected="false">ĐÁNH GIÁ (0)</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">

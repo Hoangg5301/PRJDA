@@ -67,10 +67,9 @@ public class ProductService implements IProductService {
         ProductDTO productDTO = productConvert.toDTO(oldEntity);
         //update Detail
         Integer productId = dto.getProductID();
-        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize(), dto.getColor());
+        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize());
         if (ProductDetailEntity == null) {
             ProductDetailEntity = new ProductDetailEntity();
-            ProductDetailEntity.setColor(dto.getColor());
             ProductDetailEntity.setProductID(productId);
             ProductDetailEntity.setQuantity(dto.getQuantity());
             ProductDetailEntity.setSize(dto.getSize());
@@ -119,6 +118,19 @@ public class ProductService implements IProductService {
         if (!productEntityList.isEmpty()) {
             for (ProductEntity productEntity : productEntityList) {
                 productDTOS.add(productConvert.toDTO(productEntity));
+            }
+        }
+        return productDTOS;
+    }
+
+    @Override
+    public List<ProductDTO> findAllByProductIds(List<Integer> ids) {
+        List<ProductDTO> productDTOS = new ArrayList<>();
+
+        List<ProductEntity> productEntityList = productRepository.findAllByProductIds(ids);
+        if (!productEntityList.isEmpty()) {
+            for (ProductEntity entity : productEntityList) {
+                productDTOS.add(productConvert.toDTO(entity));
             }
         }
         return productDTOS;

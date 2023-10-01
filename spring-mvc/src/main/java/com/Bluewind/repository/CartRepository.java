@@ -19,4 +19,6 @@ public interface CartRepository extends JpaRepository<CartEntity, Integer>{
 	
 	@Query("select c from CartEntity c where c.accountID = ?1")
 	List<CartEntity> findByAccountID(Integer a);
+
+	List<CartEntity> findAllByAccountID(Integer accountID);
 }

@@ -26,4 +26,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
 	List<ProductEntity> findTop4ByOrderByProductIDDesc();
 
 	List<ProductEntity> findTop4ByBrandID(Integer brandID);
+
+	@Query("select p from ProductEntity p where p.productID IN ?1")
+	List<ProductEntity> findAllByProductIds(List<Integer> ids);
 }

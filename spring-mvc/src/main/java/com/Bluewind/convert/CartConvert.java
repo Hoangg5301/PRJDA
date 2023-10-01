@@ -10,6 +10,7 @@ import com.Bluewind.entity.CartEntity;
 public class CartConvert {
 	public CartDTO toDTO(CartEntity cartEntity) {
 		CartDTO cartDTO = new CartDTO();
+		cartDTO.setCartID(cartEntity.getCartID());
 		cartDTO.setAccountID(cartEntity.getAccountID());
 		cartDTO.setProductID(cartEntity.getProductID());
 		cartDTO.setQuantity(cartEntity.getQuantity());
