@@ -4,9 +4,11 @@ import com.Bluewind.dto.admin.OrderDTO;
 import com.Bluewind.dto.admin.OrderDetailDTO;
 import com.Bluewind.entity.OrderDetailEntity;
 import com.Bluewind.entity.OrderEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public class OrderDetailConvert {
     public OrderDetailDTO toDTO(OrderDetailEntity orderDetailEntity) {
         OrderDetailDTO orderDetailDTO = new OrderDetailDTO();
