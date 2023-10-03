@@ -7,7 +7,7 @@
 
 
 <!-- Custom styles for this page -->
- 
+ <c:url var= "deletebyid" value="/api/post" />
 
 <div class="margin-content-admin">
 	<c:if test="${not empty message }">
@@ -36,44 +36,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>Một số cách lựa size giày</td>
-                                        	<td>ADMIN</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
+                                        <c:forEach var="item" items="${model.listResult}" >
+                                    		<tr>
+                                        		<td>${item.postID}</td>
+                                        		<td>${item.postName}</td>
+                                        		<td>${item.accountID}</td>
+                                        	<c:url var="postupdate" value="home-postupdate-admin">
 												<c:param name="id" value="${item.postID}"/>
 											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
+                                        	<td class="hcenter-content"><a href="${postupdate}" class="btn btn-warning btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-fw fa-cog"></i>
                                                     </span>
                                                     <span class="text">Sửa</span>
                                                 </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
+
+                                                <button type="button" class="btn btn-danger btn-icon-split" onclick="warningBeforeDelete(${item.postID})">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
                                                     <span class="text">Xóa</span>
-                                                </a>
+                                                </button>
                                              </td>
                                         </tr>
+                                    	</c:forEach>
+                                        
                                     </tbody>
                                 </table>
                             </div>
-                        	<c:url var="brandAdd" value ="home-brandupdate-admin" />
-							<div style="align-items: end; justify-content: end;;"><button id="brand_add" type="button"><a href="${brandAdd}">Thêm</a></button></div>
+                        	<c:url var="postAdd" value ="home-postupdate-admin" />
+							<div style="align-items: end; justify-content: end;"><button id="brand_add" type="button"><a href="${postAdd}">Thêm</a></button></div>
                         </form:form>
                     </div>
                 </div>
 	</div>
 </div>
 
-<scrip>
-		
+<script>
+
 	function warningBeforeDelete(id){
 		swal({
 			  title: "Xác nhận",
@@ -89,10 +89,10 @@
 			}).then(function(isConfirm) {
 			  if (isConfirm) {
 			    	deleteById(id);
-			  } 
+			  }
 			});
 	}
-	
+
 	function deleteById(id){
 		$.ajax({
 			url: '${deletebyid}',
@@ -102,11 +102,10 @@
 			success: function(result){
 				window.location.href = '${brandDisplayUrl}?message=delete_success';
 			},
-			
+
 			error: function (error) {
             	window.location.href = '${brandDisplayUrl}?message=error_system';
             }
 		})
-		
 	}
-</scrip>
+</script>

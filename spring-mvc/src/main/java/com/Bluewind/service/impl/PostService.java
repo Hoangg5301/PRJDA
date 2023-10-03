@@ -23,13 +23,15 @@ public class PostService implements IPostService{
 	private PostConvert postConvert;
 	
 	@Override
-	public List<PostDTO> findAll() {
+	public PostDTO findAll() {
 		List<PostDTO> listPostDTO = new ArrayList<>();
 		List<PostEntity> listPostEntity = postRepository.findAll();
 		for(PostEntity postEntity : listPostEntity) {
 			listPostDTO.add(postConvert.toDTO(postEntity));
 		}
-		return listPostDTO;
+		PostDTO postDTO = new PostDTO();
+		postDTO.setListResult(listPostDTO);
+		return postDTO;
 	}
 
 	@Override

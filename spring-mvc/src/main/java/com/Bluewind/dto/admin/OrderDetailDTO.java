@@ -3,29 +3,42 @@ package com.Bluewind.dto.admin;
 import com.Bluewind.dto.AbstractDTO;
 
 public class OrderDetailDTO extends AbstractDTO<OrderDetailDTO>{
-	private int idProduct;
-	private int idOrder;
-	private int quantity;
 
-	public int getIdProduct() {
-		return idProduct;
-	}
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
+	private Integer orderDetailID;
+	private Integer productID;
+	private Integer orderID;
+
+	private Integer quantity;
+
+	public Integer getOrderDetailID() {
+		return orderDetailID;
 	}
 
-	public int getIdOrder() {
-		return idOrder;
+	public void setOrderDetailID(Integer orderDetailID) {
+		this.orderDetailID = orderDetailID;
 	}
-	public void setIdOrder(int idOrder) {
-		this.idOrder = idOrder;
+
+	public Integer getProductID() {
+		return productID;
 	}
-	public int getQuantity() {
+
+	public void setProductID(Integer productID) {
+		this.productID = productID;
+	}
+
+	public Integer getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(Integer orderID) {
+		this.orderID = orderID;
+	}
+
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 }

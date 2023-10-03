@@ -2,23 +2,27 @@
     pageEncoding="UTF-8"%>
     <%@ include file="/common/taglib.jsp" %>
     
-    <c:url var ="brandApiUrl" value="/api/brand"/>
-    <c:url var ="uploadUrl" value="/api/upload/brand"/>
-    <c:url var ="brandDisplayUrl" value="/home-brand-admin"/>
+    <c:url var ="brandApiUrl" value="/api/post"/>
+
+    <c:url var ="brandDisplayUrl" value="/home-post-admin"/>
 		<div id="dialog_brand" class ="margin-content-admin" >
 		
 			<form:form id="form-add-brand" modelAttribute="model">
 
 				<div>
-					<label><b>Tên nhãn hiệu:</b></label>
-					<form:input path="brandName" />
-					<input id="brandID" name="brandID" type="hidden" value="${model.brandID}" />
+					<label><b>Tiêu đề bài viết:</b></label>
+						<form:input path="postName" />
+					<input id="postID" name="postID" type="hidden" value="${model.postID}" />
+				</div>
+				<div>
+					<label><b>Tiêu đề bài viết:</b></label>
+					<form:textarea path="postContent" />
 				</div>
 			</form:form>
-				<c:if test="${not empty model.brandID}">
+				<c:if test="${not empty model.postID}">
 					<button type="button" id="brand_dialog_add">cập nhật</button>
 				</c:if>
-				<c:if test="${empty model.brandID}">
+				<c:if test="${empty model.postID}">
 					<button type="button" id="brand_dialog_add">thêm</button>
 				</c:if>
 				
@@ -31,7 +35,7 @@
 				e.preventDefault();
 				var data ={};
 				var formData = $('#form-add-brand').serializeArray();
-				var id= $("#brandID").val();
+				var id= $("#postID").val();
 				
 				// truyền form data vào object data.
 				$.each(formData, function(i, v){

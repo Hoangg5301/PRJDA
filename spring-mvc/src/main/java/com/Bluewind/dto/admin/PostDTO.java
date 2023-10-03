@@ -7,8 +7,18 @@ public class PostDTO extends AbstractDTO<PostDTO>{
 	private String postName;
 	private String postContent;
 	private Integer accountID;
-	
-	
+
+	private String accountName;
+
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
 	public Integer getPostID() {
 		return postID;
 	}
