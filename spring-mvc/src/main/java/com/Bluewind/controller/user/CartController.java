@@ -9,9 +9,6 @@ import com.Bluewind.service.IProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller(value = "cartControllerOfUser")
@@ -29,15 +26,12 @@ public class CartController {
         this.cartCommon = cartCommon;
     }
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public ModelAndView homePage(@RequestHeader("accountId") String accountId) {
+    @RequestMapping(value = "/cart", method = RequestMethod.POST)
+    public ModelAndView homePage(@RequestParam("accountId") String data) {
         ModelAndView mav = new ModelAndView("user/carts/cart");
-//        Integer accountId = Integer.parseInt(request.getParameter("accountId"));
-//        String accountId = request.getHeader("accountId");
-        List<CartProductDetail> cartProductDetails = cartCommon.getCarts(Integer.parseInt(accountId));
-//        List<CartProductDetail> cartProductDetails = new ArrayList<>();
+        List<CartProductDetail> cartProductDetails = cartCommon.getCarts(Integer.parseInt(data));
         mav.addObject("cartProductDetails", cartProductDetails);
-        return new ModelAndView("user/carts/cart");
+        return mav;
     }
 
     @RequestMapping(value = "/create-cart", method = RequestMethod.POST)

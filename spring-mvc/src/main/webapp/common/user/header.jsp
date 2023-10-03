@@ -1,5 +1,7 @@
 <%@ include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="javax.servlet.RequestDispatcher" %>
+<%@ page import="java.io.IOException" %>
 
 <link href="<c:url value='template/user/custom/css/customuser.css'/>" rel="stylesheet" type="text/css"/>
 <div class="search-section">
@@ -127,28 +129,24 @@
                 </nav>
             </div>
             <div class="col-12 col-md-2 col-lg-3 pr-md-0 icons-header-mobile icon-margin">
-
                 <div class="fables-header-icons">
-                    <a href="<c:url value='/cart'/>"
-                       class="fables-third-text-color  right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"
-                       aria-haspopup="true"
-                       aria-expanded="false">
-                        <span class="fables-iconcart-icon font-20"></span>
-                        <span class="fables-cart-number fables-second-background-color text-center">3</span>
-                    </a>
-
-
+                    <form action="/spring_mvc_war_exploded/cart" method="post">
+                        <input type="hidden" id="accountId" name="accountId" />
+                        <button type="submit"
+                           class="fables-third-text-color  right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            <span class="fables-iconcart-icon font-20"></span>
+                            <span class="fables-cart-number fables-second-background-color text-center">3</span>
+                        </button>
+                    </form>
                     <a href="#"
                        class="open-search fables-third-text-color right  top-header-link px-3 px-md-2 px-lg-4 fables-second-hover-color border-0 max-line-height">
                         <span class="fables-iconsearch-icon"></span>
                     </a>
-
-
                     <a href="signin.html"
                        class="fables-third-text-color fables-second-hover-color font-13 top-header-link px-3 px-md-2 px-lg-4 max-line-height"><span
                             class="fables-iconuser"></span></a>
-
-
                 </div>
             </div>
         </div>
@@ -157,46 +155,6 @@
 
 <script>
     const accountId = localStorage.getItem('accountId');
-    <%--let headers = new Headers();--%>
-    <%--headers.set('accountId', accountId.toString());--%>
-
-    <%--function getCart() {--%>
-    <%--    $.ajax({--%>
-    <%--        url: '/spring_mvc_war_exploded${getcart}',--%>
-    <%--        type: 'GET',--%>
-    <%--        headers: headers--%>
-    <%--    })--%>
-    <%--}--%>
-
-    <%--console.log(accountId);--%>
-    <%--console.log(headers);--%>
-
-    // function getData() {
-    //     let myHeaders = new Headers();
-    //     myHeaders.append("accountId", accountId.toString());
-    //
-    //     let requestOptions = {
-    //         method: "GET",
-    //         headers: myHeaders,
-    //         redirect: "follow",
-    //     };
-    //
-    //     fetch("http://localhost:8080/cart", requestOptions);
-    // }
-    function getCart() {
-        var myHeaders = new Headers();
-        myHeaders.append("accountId", "1");
-        myHeaders.append("Cookie", "JSESSIONID=064F9E30EE5EC3E2C7A1FEE7A8EB23E8");
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch("http://localhost:8080/spring_mvc_war_exploded/cart", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-    }
+    $("#accountId").val(accountId);
+    // document.getElementById("accountId"). = accountId;
 </script>
