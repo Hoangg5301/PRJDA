@@ -4,3 +4,5 @@
 /spring-mvc/target
 /.idea
 /.metadata
+*/.metadata/*
+*/.idea/*
