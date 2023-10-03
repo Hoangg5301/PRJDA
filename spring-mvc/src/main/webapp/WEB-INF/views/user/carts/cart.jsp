@@ -13,9 +13,35 @@
     }
 </style>
 <script>
-    const amountElement = document.querySelector('.amount');
-    const amount = parseFloat(amountElement.innerText);
-    amountElement.innerText = amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    // const amountElement = document.querySelector('.amount');
+    // const amount = parseFloat(amountElement.innerText);
+    // amountElement.innerText = amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+    //Bắt event F5
+    window.addEventListener('beforeunload', function (event) {
+
+        // const confirmationMessage = 'Bạn có chắc muốn làm mới trang này?';
+        // event.returnValue = confirmationMessage; // Cho phép hiển thị thông báo xác nhận (đối với một số trình duyệt)
+        refresh();
+
+    });
+
+    //Sử dụng Ajax gửi request
+    const accountId = localStorage.getItem('accountId');
+    const myHeaders = new Headers();
+
+    // Gửi giá trị lên server (controller) bằng Ajax request
+    function refresh() {
+        $.ajax({
+            type: 'GET',
+            url: '/cart',
+            header: myHeaders,
+            success: function (response) {
+                console.log('Server response:', response);
+            }
+        });
+    }
+
 </script>
 
 <section class="pt-5 pb-5">
@@ -36,7 +62,7 @@
                     </thead>
                     <tbody>
                     <c:forEach items="${cartProductDetails}" var="cart" varStatus="loop">
-                        <input type="hidden" id = "idElement_${loop.index}" value="${cart.cartId}" />
+                        <input type="hidden" id="idElement_${loop.index}" value="${cart.cartId}"/>
                         <tr id="${cart.cartId}">
                             <td data-th="Product">
                                 <div class="row">
@@ -57,8 +83,9 @@
                             </td>
                             <td class="actions" data-th="">
                                 <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2" onclick="deleteById($('#idElement_${loop.index}').val())">
-                                        <c:url var="cartDelete" value="/cart" />
+                                    <button class="btn btn-white border-secondary bg-white btn-md mb-2"
+                                            onclick="deleteById($('#idElement_${loop.index}').val())">
+                                        <c:url var="cartDelete" value="/cart"/>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>

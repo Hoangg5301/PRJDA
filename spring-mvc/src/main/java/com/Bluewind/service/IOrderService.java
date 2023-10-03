@@ -9,4 +9,7 @@ import java.util.List;
 public interface IOrderService {
 
     List<OrderDTO> findAll();
+
+    List<OrderDTO> findByPhoneNumber(String phoneNumber);
+
 }
