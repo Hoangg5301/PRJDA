@@ -18,15 +18,30 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private OrderConvert orderConvert;
+
     @Override
     public List<OrderDTO> findAll() {
         List<OrderEntity> listOrderEntity = orderRepository.findAll();
         List<OrderDTO> listOrderDTO = new ArrayList<>();
         OrderDTO orderDTO;
-        for(OrderEntity orderEntity : listOrderEntity){
+        for (OrderEntity orderEntity : listOrderEntity) {
             orderDTO = orderConvert.toDTO(orderEntity);
             listOrderDTO.add(orderDTO);
         }
         return listOrderDTO;
     }
+
+    @Override
+    public List<OrderDTO> findByPhoneNumber(String phoneNumber) {
+        List<OrderEntity> orderEntities = orderRepository.findAllByPhoneNumber(phoneNumber);
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+        if (!orderEntities.isEmpty()) {
+            for (OrderEntity order : orderEntities) {
+                orderDTOS.add(orderConvert.toDTO(order));
+
+            }
+        }
+        return orderDTOS;
+    }
+
 }
