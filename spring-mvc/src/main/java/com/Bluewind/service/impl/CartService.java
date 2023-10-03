@@ -80,4 +80,23 @@ public class CartService implements ICartService {
         return cartDTOList;
     }
 
+    @Override
+    public void deleteById(Integer id) {
+        if (id != null) {
+            cartRepository.delete(id);
+        }
+    }
+
+    @Override
+    public CartDTO updateByCartIDAndAccountID(Integer accountID, Integer productID, Integer quantity) {
+        CartEntity cartEntity = cartRepository.findByAccountIDAndProductID(accountID, productID);
+        if (cartEntity != null) {
+            cartEntity.setQuantity(quantity + cartEntity.getQuantity());
+        } else {
+            cartEntity = new CartEntity(accountID, productID, quantity);
+        }
+        cartEntity = cartRepository.save(cartEntity);
+        return cartConvert.toDTO(cartEntity);
+    }
+
 }

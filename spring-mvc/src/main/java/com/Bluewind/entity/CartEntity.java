@@ -1,5 +1,7 @@
 package com.Bluewind.entity;
 
+import lombok.AllArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,9 +20,18 @@ public class CartEntity {
 	
 	@Column(name ="IDProduct")
 	private Integer productID;
-	
+
+	public CartEntity(Integer accountID, Integer productID, int quantity) {
+		this.accountID = accountID;
+		this.productID = productID;
+		this.quantity = quantity;
+	}
+
 	@Column(name = "quantity")
 	private int quantity;
+
+	public CartEntity() {
+	}
 
 	public int getQuantity() {
 		return quantity;
