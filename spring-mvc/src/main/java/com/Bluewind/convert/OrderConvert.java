@@ -18,6 +18,7 @@ public class OrderConvert {
         orderDTO.setStatus(orderEntity.getStatus());
         orderDTO.setAddress(orderEntity.getAddress());
         orderDTO.setPhoneNumber(orderEntity.getPhoneNumber());
+        orderDTO.setPromotionID(orderEntity.getPromotionID());
         return orderDTO;
     }
 
@@ -29,6 +30,7 @@ public class OrderConvert {
         orderEntity.setCreateTime(orderDTO.getCreateTime());
         orderEntity.setStatus(orderDTO.getStatus());
         orderEntity.setAddress(orderDTO.getAddress());
+        orderEntity.setPromotionID(orderDTO.getPromotionID());
         orderEntity.setPhoneNumber(orderDTO.getPhoneNumber());
         return orderEntity;
     }
@@ -40,6 +42,7 @@ public class OrderConvert {
         orderEntity.setCreateTime(orderDTO.getCreateTime());
         orderEntity.setStatus(orderDTO.getStatus());
         orderEntity.setAddress(orderDTO.getAddress());
+        orderEntity.setPromotionID(orderDTO.getPromotionID());
         orderEntity.setPhoneNumber(orderDTO.getPhoneNumber());
         return orderEntity;
     }

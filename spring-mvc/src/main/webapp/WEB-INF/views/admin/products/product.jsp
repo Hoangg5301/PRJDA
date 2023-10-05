@@ -37,40 +37,38 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="item" items="${model.listResult}" varStatus="loop">
-
-                                        <a>
-
-                                        </a>
-                                        <tr id="productDetailClick">
-                                        	<input type="hidden" value = "${item.productID}" id="idElement_${loop.index}" name="idElement" />
-                                            <input type="hidden" value = "${item.productName}" id="nameElement_${loop.index}" name="nameElement" />
-                                        	<td>${item.productName}</td>
-                                        	<td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
-                                        	<td>${item.price} VNĐ</td>
-                                        	<td>${item.quantity}</td>
-                                        	<td>${item.brandName}</td>
-                                        	<c:url var="brandUpdate" value="home-productupdate-admin">
-												<c:param name="id" value="${item.productID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
+                                        <a href="<c:url value='' />">
+                                            <tr id="productDetailClick">
+                                                <input type="hidden" value = "${item.productID}" id="idElement_${loop.index}" name="idElement" />
+                                                <input type="hidden" value = "${item.productName}" id="nameElement_${loop.index}" name="nameElement" />
+                                                <td>${item.productName}</td>
+                                                <td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
+                                                <td>${item.price} VNĐ</td>
+                                                <td>${item.quantity}</td>
+                                                <td>${item.brandName}</td>
+                                                <c:url var="brandUpdate" value="home-productupdate-admin">
+                                                    <c:param name="id" value="${item.productID}"/>
+                                                </c:url>
+                                                <td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-fw fa-cog"></i>
                                                     </span>
                                                     <span class="text">Sửa</span>
                                                 </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/product">
-												<c:param name="id" value="${item.productID}"/>
-											</c:url>
-                                                <button onclick="warningBeforeDelete($('#idElement_${loop.index}').val())" type="button" class="btn btn-danger btn-icon-split">
+
+                                                    <c:url var="brandDelete" value="/api/product">
+                                                        <c:param name="id" value="${item.productID}"/>
+                                                    </c:url>
+                                                    <button onclick="warningBeforeDelete($('#idElement_${loop.index}').val())" type="button" class="btn btn-danger btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
-                                                    <span class="text">Xóa</span>
-                                                </button>
-                                             </td>
-                                        </tr>
-                                        </c:forEach>
+                                                        <span class="text">Xóa</span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </a>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

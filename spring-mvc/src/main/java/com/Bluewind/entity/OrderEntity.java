@@ -10,7 +10,6 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idorder")
     private Integer orderID;
-
     @Column(name = "fullnName")
     private String fullName;
     @Column(name = "createTime")
@@ -21,7 +20,8 @@ public class OrderEntity {
     private String address;
     @Column(name = "phoneNumber")
     private String phoneNumber;
-
+    @Column(name ="IDPromotion")
+    private Integer promotionID;
     @Column(name = "IDTK")
     private Integer accountID;
 
@@ -71,6 +71,14 @@ public class OrderEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getPromotionID() {
+        return promotionID;
+    }
+
+    public void setPromotionID(Integer promotionID) {
+        this.promotionID = promotionID;
     }
 
     public Integer getAccountID() {
