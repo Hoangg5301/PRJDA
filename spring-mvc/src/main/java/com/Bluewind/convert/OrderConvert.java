@@ -4,8 +4,6 @@ import com.Bluewind.dto.admin.OrderDTO;
 import com.Bluewind.entity.OrderEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Component
 public class OrderConvert {
 
@@ -18,7 +16,7 @@ public class OrderConvert {
         orderDTO.setStatus(orderEntity.getStatus());
         orderDTO.setAddress(orderEntity.getAddress());
         orderDTO.setPhoneNumber(orderEntity.getPhoneNumber());
-        orderDTO.setPromotionID(orderEntity.getPromotionID());
+        orderDTO.setDiscount(orderEntity.getDiscount());
         return orderDTO;
     }
 
@@ -30,7 +28,7 @@ public class OrderConvert {
         orderEntity.setCreateTime(orderDTO.getCreateTime());
         orderEntity.setStatus(orderDTO.getStatus());
         orderEntity.setAddress(orderDTO.getAddress());
-        orderEntity.setPromotionID(orderDTO.getPromotionID());
+        orderEntity.setDiscount(orderDTO.getDiscount());
         orderEntity.setPhoneNumber(orderDTO.getPhoneNumber());
         return orderEntity;
     }
@@ -42,7 +40,7 @@ public class OrderConvert {
         orderEntity.setCreateTime(orderDTO.getCreateTime());
         orderEntity.setStatus(orderDTO.getStatus());
         orderEntity.setAddress(orderDTO.getAddress());
-        orderEntity.setPromotionID(orderDTO.getPromotionID());
+        orderEntity.setDiscount(orderDTO.getDiscount());
         orderEntity.setPhoneNumber(orderDTO.getPhoneNumber());
         return orderEntity;
     }

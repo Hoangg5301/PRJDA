@@ -13,15 +13,15 @@ public class OrderDTO extends AbstractDTO<OrderDTO>{
 	private String status;
 	private String address;
 	private String phoneNumber;
-	private Integer promotionID;
+	private Integer discount;
 	private Integer accountID;
 
-	public Integer getPromotionID() {
-		return promotionID;
+	public Integer getDiscount() {
+		return discount;
 	}
 
-	public void setPromotionID(Integer promotionID) {
-		this.promotionID = promotionID;
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
 	}
 
 	public String getFullName() {

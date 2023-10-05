@@ -18,9 +18,9 @@ public class ProductDetailController {
 
     @RequestMapping(value = "/home-productDetail-admin", method = RequestMethod.GET)
     public ModelAndView displayList(HttpServletRequest request) {
-     ModelAndView mav = new ModelAndView();
+     ModelAndView mav = new ModelAndView("admin/productDetails/productDetail");
         ProductDetailDTO productDetailDTO = new ProductDetailDTO();
-        Integer id = Integer.parseInt(request.getParameter("idProduct"));
+        Integer id = Integer.parseInt(request.getParameter("productID"));
         String productName = request.getParameter("productName");
         productDetailDTO.setProductName(productName);
         productDetailDTO.setListResult(productDetailService.findListProductDetailByProduct(id));

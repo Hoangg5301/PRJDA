@@ -20,8 +20,8 @@ public class OrderEntity {
     private String address;
     @Column(name = "phoneNumber")
     private String phoneNumber;
-    @Column(name ="IDPromotion")
-    private Integer promotionID;
+    @Column(name ="Discount")
+    private Integer discount;
     @Column(name = "IDTK")
     private Integer accountID;
 
@@ -73,12 +73,12 @@ public class OrderEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getPromotionID() {
-        return promotionID;
+    public Integer getDiscount() {
+        return discount;
     }
 
-    public void setPromotionID(Integer promotionID) {
-        this.promotionID = promotionID;
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
     }
 
     public Integer getAccountID() {
