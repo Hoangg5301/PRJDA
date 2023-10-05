@@ -10,17 +10,17 @@
         <div class="row">
             <div class="col-12 col-sm-4 mb-4 wow fadeInUpBig brand" data-wow-duration="2s">
                 <div class="image-container translate-effect-right">
-                    <a href="#"><img src="assets/custom/images/nike.jpg" alt="" class="img-fluid w-100"></a>
+                    <a href="#"><img src="<c:url value='image/logo/adidas.jpg'/>" alt="" class="img-fluid w-100"></a>
                 </div>
             </div>
             <div class="col-12 col-sm-4 mb-4 wow fadeInUpBig brand" data-wow-duration="2s">
                 <div class="image-container translate-effect-right">
-                    <a href="#"><img src="assets/custom/images/adidas2.png" alt="" class="img-fluid w-100"></a>
+                    <a href="#"><img src="<c:url value='image/logo/ananas.jpg'/>" alt="" class="img-fluid w-100"></a>
                 </div>
             </div>
             <div class="col-12 col-sm-4 mb-4 wow fadeInUpBig brand" data-wow-duration="2s">
                 <div class="image-container translate-effect-right">
-                    <a href="#"><img src="assets/custom/images/balenciaga.jpg" alt="" class="img-fluid w-100"></a>
+                    <a href="#"><img src="<c:url value='image/logo/btits.jpg'/>" alt="" class="img-fluid w-100"></a>
                 </div>
             </div>
         </div>
@@ -185,6 +185,5 @@
 
         </div>
     </div>
-
 
 </div>

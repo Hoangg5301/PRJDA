@@ -107,7 +107,7 @@ public class ProductService implements IProductService {
     @Override
     @Transactional
 	public void uploadAdd(String path1, String path2, String path3, String path4) {
-		Integer id = productRepository.findLastId();
+		Integer id = productRepository.findLastId() ;
 		productRepository.uploadAdd(path1, path2, path3, path4, id);
 		
 	}

@@ -49,6 +49,8 @@
 		<url-pattern>*.jpeg</url-pattern>
 		<url-pattern>*.png</url-pattern>
 		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.jfif</url-pattern>
+		<url-pattern>*.webp</url-pattern>
 		
 	</servlet-mapping>
 	

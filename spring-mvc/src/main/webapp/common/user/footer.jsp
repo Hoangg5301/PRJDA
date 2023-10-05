@@ -4,8 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                    <a href="<c:url value='/trang-chu' /> " class="fables-second-border-color border-bottom pb-3 d-block mb-3 mt-minus-13"><img
-                            src="<c:url value='/image/logo/blueWindlogo.png' />" style="width: 150px; height: 120px;" alt="fables template"></a>
+                    <a href="<c:url value='/trang-chu' /> " style="color: #d7e3f5; class="fables-second-border-color border-bottom pb-3 d-block mb-3 mt-minus-13">BlueWind
+                    </a>
                     <p class="font-15 fables-third-text-color">
 	                    Bluewind đề cao tính khác biệt trong xây dựng dịch vụ đối với khách hàng để phù hợp với văn hóa và nâng tầm chất lượng. 
 	                    Đồng thời luôn đặt khách hàng là trung tâm trong mọi suy nghĩ và hành động.

@@ -36,9 +36,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        	<c:forEach var="item" items="${model.listResult}" varStatus="loop">
+                                    <c:forEach var="item" items="${model.listResult}" varStatus="loop">
+
+                                        <a>
+
+                                        </a>
+                                        <tr id="productDetailClick">
                                         	<input type="hidden" value = "${item.productID}" id="idElement_${loop.index}" name="idElement" />
+                                            <input type="hidden" value = "${item.productName}" id="nameElement_${loop.index}" name="nameElement" />
                                         	<td>${item.productName}</td>
                                         	<td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
                                         	<td>${item.price} VNĐ</td>
@@ -71,11 +76,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 	</div>
 </div>
 <script>
+
+
 	
 	function warningBeforeDelete(id){
 		swal({
@@ -110,6 +116,5 @@
             	window.location.href = '${brandDisplayUrl}?message=error_system';
             }
 		})
-		
 	}
 </script>

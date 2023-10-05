@@ -1,10 +1,22 @@
 package com.Bluewind.dto.admin;
 
-public class ProductDetailDTO {
+import com.Bluewind.dto.AbstractDTO;
+
+public class ProductDetailDTO extends AbstractDTO<ProductDetailDTO> {
 	private Integer productDetailID;
+	private String productName;
 	private Integer productID;
 	private String size;
 	private Integer quantity;
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	public Integer getProductDetailID() {
 		return productDetailID;
 	}

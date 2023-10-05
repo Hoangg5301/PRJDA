@@ -23,18 +23,15 @@ public class ProductAPI {
 	@Autowired
 	private IProductService productService;
 	
-	@Autowired
-	private IProductDetailService productDetailService;
-	
 	@PostMapping("/api/product")
 	public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
 		ProductDTO productDTOOut =  productService.insert(productDTO);
-		Integer idLast = productService.findlastID();
-		ProductDetailDTO productDetailDTO = new ProductDetailDTO();
-		productDetailDTO.setProductID(idLast);
-		productDetailDTO.setQuantity(productDTO.getQuantity());
-		productDetailDTO.setSize(productDTO.getSize());
-		productDetailService.insert(productDetailDTO);
+//		Integer idLast = productService.findlastID();
+//		ProductDetailDTO productDetailDTO = new ProductDetailDTO();
+//		productDetailDTO.setProductID(idLast);
+//		productDetailDTO.setQuantity(productDTO.getQuantity());
+//		productDetailDTO.setSize(productDTO.getSize());
+//		productDetailService.insert(productDetailDTO);
 		return productDTOOut;
 	}
 	@PutMapping("/api/product")

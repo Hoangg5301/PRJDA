@@ -5,94 +5,121 @@
 <c:url var="brandApiUrl" value="/api/product" />
 <c:url var="uploadUrl" value="/api/upload/product" />
 <c:url var="brandDisplayUrl" value="/home-product-admin" />
-<div id="dialog_brand" class="margin-content-admin">
+<div id="dialog_brand" class="margin-content-admin marginform">
 
-	<form:form id="form-add-brand" modelAttribute="model">
 
-		<div>
-			<label><b>Tên sản phẩm:</b></label>
-			<form:input path="productName" />
-			<input type="hidden" id="productID"  name ="productID" value="${model.productID}"/>
+
+		<div class="content-main">
+				<table class="table-additem">
+					<tbody>
+					<form:form id="form-add-brand" modelAttribute="model">
+						<tr>
+							<td><label><b>Tên sản phẩm:</b></label></td>
+							<td>
+								<form:input path="productName" />
+								<input type="hidden" id="productID"  name ="productID" value="${model.productID}"/>
+							</td>
+						</tr>
+						<tr>
+							<td><label><b>Giá:</b></label></td>
+							<td><form:input path="price" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Màu sắc:</b></label></td>
+							<td>
+								<label> <input type="radio" name="color" value="Yellow">Vàng</label>
+
+								<label> <input type="radio" name="color" value="white">Trắng</label>
+
+								<label> <input type="radio" name="color" value="Black">Đen</label>
+
+								<label> <input type="radio" name="color" value="other">Màu khác</label>
+							</td>
+						</tr>
+						<tr>
+							<td><label><b>Số lượng:</b></label></td>
+							<td><form:input path="quantity" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Chất liệu:</b></label></td>
+							<td><form:input path="meterial" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Trọng lượng:</b></label></td>
+							<td><form:input path="weight" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Mô tả:</b></label></td>
+							<td><form:textarea path="describeDetail" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Giới tính</b></label></td>
+							<td>
+								<select name="gender" id="gender">
+									<option>--Chọn giới tính--</option>
+									<option value="nam">nam</option>
+									<option value="nữ">nữ</option>
+									<option value="khác">khác</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td><label><b>Loại sản phẩm:</b></label></td>
+							<td>
+								<select name="typeID" id="select-type">
+									<option>--Chọn loại sản phẩm--</option>
+									<c:forEach var="listType" items="${listProductType}">
+										<option value="${listType.typeID}">${listType.typeName}</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td><label><b>Nhãn hiệu:</b></label></td>
+							<td>
+								<select id="select-brand" name="brandID">
+									<option id="select-brand">--Chọn loại nhãn hiệu--</option>
+									<c:forEach var="listBrand" items="${listBrand}">
+										<option value="${listBrand.brandID}">${listBrand.brandName}</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr>
+						</form:form>
+
+					<form:form id="form-image-prodduct">
+						<tr>
+							<td><label><b>Hình ảnh 1:</b></label></td>
+							<td><input type="file" name="img1" id="img1" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Hình ảnh 2:</b></label></td>
+							<td><input type="file"name="img2" id="img2" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Hình ảnh 3:</b></label></td>
+							<td><input type="file" name="img3" id="img3" /></td>
+						</tr>
+						<tr>
+							<td><label><b>Hình ảnh 4:</b></label></td>
+							<td><input type="file" name="img4" id="img4" /></td>
+						</tr>
+					</form:form>
+					</tbody>
+				</table>
+
 		</div>
-		<label><b>Giá:</b></label>
-		<form:input path="price" />
-		<div></div>
-		<label><b>Size:</b></label>
-		<form:input path="size" />
-		<div></div>
 
-		<label> <input type="radio" name="color" value="Yellow">
-			Vàng
-		</label>
-		<br>
-		<label> <input type="radio" name="color" value="white">
-			Trắng
-		</label>
-		<br>
-		<label> <input type="radio" name="color" value="Black">
-			Đen
-		</label>
-		
-				<label> <input type="radio" name="color" value="other">
-			Màu khác
-		</label>
-
-		<div></div>
-		<label><b>Số lượng:</b></label>
-		<form:input path="quantity" />
-		<div></div>
-		<label><b>Chất liệu:</b></label>
-		<form:input path="meterial" />
-		<div></div>
-		<label><b>Trọng lượng:</b></label>
-		<form:input path="weight" />
-		<div></div>
-		<label><b>Mô tả:</b></label>
-		<form:input path="describeDetail" />
-		<div></div>
-		<label><b>Giới tính</b></label>
-		<form:input path="gender" />
-		<div></div>
-		<label><b>Loại sản phẩm:</b></label>
-		<select name="typeID" id="select-type">
-			<option>--Chọn loại sản phẩm--</option>
-			<c:forEach var="listType" items="${listProductType}">
-				<option value="${listType.typeID}">${listType.typeName}</option>
-			</c:forEach>
-		</select>
-
-		<div></div>
-		<label><b>Nhãn hiệu:</b></label>
-		<select id="select-brand" name="brandID">
-			<option id="select-brand">--Chọn loại nhãn hiệu--</option>
-			<c:forEach var="listBrand" items="${listBrand}">
-				<option value="${listBrand.brandID}">${listBrand.brandName}</option>
-			</c:forEach>
-		</select>
-		<div></div>
-	</form:form>
-
-	<form:form id="form-image-prodduct">
-		<div>
-			<label><b>Hình ảnh 1:</b></label><input type="file" name="img1" id="img1" /> 
-				<hr>
-			<label><b>Hình ảnh 2:</b></label> <input type="file"name="img2" id="img2" />
-				<hr>
-			<label><b>Hình ảnh 3:</b></label> <input type="file" name="img3" id="img3" /> 
-				<hr>
-			<label><b>Hình ảnh 4:</b></label> <input type="file" name="img4" id="img4" />
-		</div>
-	</form:form>
 
 	<c:if test="${not empty model.productID}">
 		<button type="button" id="brand_dialog_add">cập nhật</button>
 	</c:if>
-	<c:if test="${empty model.productID}">ss
+	<c:if test="${empty model.productID}">
 					<button type="button" id="brand_dialog_add">thêm</button>
 	</c:if>
 
 	<button type="button" id="brand_dialog_cancel">
-		<a href="<c:url value ="/home-brand-admin" />">Huỷ bỏ</a>
+		<a href="<c:url value ="/home-product-admin" />">Huỷ bỏ</a>
 	</button>
 
 
@@ -156,10 +183,10 @@
 			contentType : false,
 			processData : false,
 			success : function(result) {
-				console.log(result);
+				window.location.href = '${brandDisplayUrl}?message=add_success';
 			},
 			error : function(error) {
-				console.log(error);
+				window.location.href = '${brandDisplayUrl}?message=error_system';
 			}
 		});
 	}

@@ -40,7 +40,13 @@ public class ProductDetailService implements IProductDetailService{
 		
 		return productDetailConvert.toDTO(productDetailRepository.save(productDetailEntity));
 	}
-	
+
+	@Override
+	public void delete(ProductDetailDTO dto) {
+		ProductDetailEntity productDetailEntity = productDetailConvert.toEntity(dto);
+		productDetailRepository.delete(productDetailEntity);
+	}
+
 	public void update(ProductDetailDTO dto) {
 		productDetailRepository.updateProductDetail(dto.getQuantity(), dto.getProductID(), dto.getSize());
 	}
@@ -60,5 +66,17 @@ public class ProductDetailService implements IProductDetailService{
         }
         return productDetailDTOS;
     }
-	
+
+	@Override
+	public List<ProductDetailDTO> findListProductDetailByProduct(Integer id) {
+		List<ProductDetailEntity> listProductDetail = productDetailRepository.findListProductDetailByProduct(id);
+		List<ProductDetailDTO> listProductDetailDTO = new ArrayList<>();
+
+		for(ProductDetailEntity productDetailEntity : listProductDetail){
+			ProductDetailDTO productDetailDTO = productDetailConvert.toDTO(productDetailEntity);
+			listProductDetailDTO.add(productDetailDTO);
+		}
+		return listProductDetailDTO;
+	}
+
 }

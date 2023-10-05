@@ -23,6 +23,9 @@
 	rel="stylesheet">
 	
 	<script src="<c:url value='template/AlertComfirm/sweetalert2.min.js'/>"></script>
+
+	<link href="<c:url value='template/admin/custom/addIitem.css'/> "
+		  rel="stylesheet">
 </head>
 <body class="content-admin-deco">
 	<div class="left-content-admin">

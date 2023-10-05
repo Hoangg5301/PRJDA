@@ -33,4 +33,7 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 
     @Query("select p from ProductDetailEntity p where p.productID = ?1 and p.size = ?2")
 	ProductDetailEntity findByProduct(Integer id, String size);
+
+	@Query("select p from ProductDetailEntity p where p.productID = ?1")
+	List<ProductDetailEntity> findListProductDetailByProduct(Integer id);
 }

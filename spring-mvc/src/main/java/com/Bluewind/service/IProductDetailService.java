@@ -6,8 +6,10 @@ import com.Bluewind.dto.admin.ProductDetailDTO;
 
 public interface IProductDetailService {
 	List<ProductDetailDTO> findAll();
-	public ProductDetailDTO insert(ProductDetailDTO dto);
+	ProductDetailDTO insert(ProductDetailDTO dto);
+	void delete(ProductDetailDTO dto);
 	List<ProductDetailDTO> findAllByProductIds(List<Integer> ids);
+	List<ProductDetailDTO> findListProductDetailByProduct(Integer id);
 }
 
 

@@ -107,7 +107,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" id="sub-nav3" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
-                                    Giới thiệu
+                                    Tất cả sản phẩm
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -119,7 +119,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" id="sub-nav4" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
-                                    Đang khuyến mãi
+                                    Giới thiệu
                                 </a>
                             </li>
 
