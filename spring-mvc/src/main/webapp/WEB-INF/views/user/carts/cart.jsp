@@ -102,7 +102,11 @@
         </div>
         <div class="row mt-4 d-flex align-items-center">
             <div class="col-sm-6 order-md-2 text-right">
-                <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
+                <form action="/spring_mvc_war_exploded/viewcheckout" method="post">
+                    <input type="hidden" class="accountId_submit" id="accountId" name="accountId" />
+                    <button class="btn btn-primary mb-4 btn-lg pl-5 pr-5"
+                       type="submit">Checkout</button>
+                </form>
             </div>
             <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                 <a href="catalog.html">
@@ -116,6 +120,9 @@
     <script src="<c:url value='template/user/assets/cartcustom/js/popper.min.js'/>"></script>
 
     <script>
+
+        const accountIdCheckout = localStorage.getItem('accountId');
+        $(".accountId_submit").val(accountIdCheckout);
         function deleteById(id) {
             $.ajax({
                 url: '${cartDelete}',

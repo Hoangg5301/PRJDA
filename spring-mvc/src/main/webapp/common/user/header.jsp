@@ -164,4 +164,7 @@
     <%--        }--%>
     <%--    });--%>
     <%--});--%>
+    const accountId = localStorage.getItem('accountId');
+    $("#accountId").val(accountId);
+    // document.getElementById("accountId"). = accountId;
 </script>

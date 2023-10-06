@@ -41,13 +41,13 @@ public class OrderController {
         this.odDetailService = odDetailService;
     }
 
-    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public ModelAndView checkout(@RequestBody Integer accountId) {
-        ModelAndView mav = new ModelAndView("");
-        List<CartProductDetail> cartProductDetails = cartCommon.getCarts(accountId);
-        mav.addObject("cartProductDetails", cartProductDetails);
-        return mav;
-    }
+//    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
+//    public ModelAndView checkout(@RequestBody Integer accountId) {
+//        ModelAndView mav = new ModelAndView("");
+//        List<CartProductDetail> cartProductDetails = cartCommon.getCarts(accountId);
+//        mav.addObject("cartProductDetails", cartProductDetails);
+//        return mav;
+//    }
 
     @GetMapping("/order-by-id")
     public ModelAndView order(HttpServletRequest request) {

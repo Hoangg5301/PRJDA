@@ -76,7 +76,7 @@
                     localStorage.setItem('email',result.email);
                     localStorage.setItem('phoneNumber', result.phoneNumber);
                     localStorage.setItem('address', result.address);
-                    localStorage.setItem('AccountID', result.accountID);
+                    localStorage.setItem('accountId', result.accountID);
                     localStorage.setItem('status', result.status);
                     console.log(result);
                 }else if(result.role === "0"){
@@ -86,7 +86,7 @@
                     localStorage.setItem('email',result.email);
                     localStorage.setItem('phoneNumber', result.phoneNumber);
                     localStorage.setItem('address', result.address);
-                    localStorage.setItem('AccountID', result.accountID);
+                    localStorage.setItem('accountId', result.accountID);
                     localStorage.setItem('status', result.status);
                     window.location.href = '<c:url value="/hone" />';
                 }else{
