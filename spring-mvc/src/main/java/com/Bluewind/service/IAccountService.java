@@ -10,4 +10,5 @@ public interface IAccountService {
 	AccountDTO insert(AccountDTO dto);
 	AccountDTO update(AccountDTO dto);
 	void delete(Integer id);
+	AccountDTO checkLogin(String userName, String password);
 }

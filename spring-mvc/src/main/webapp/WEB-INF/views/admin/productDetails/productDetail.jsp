@@ -41,8 +41,8 @@
                                         <td>${item.productDetailID}</td>
                                         <td>${item.size}</td>
                                         <td>${item.quantity}</td>
-                                        <c:url var="productDetailUpdate" value="home-productDetail-admin">
-                                            <c:param name="id" value="${item.productDetailID}"/>
+                                        <c:url var="productDetailUpdate" value="home-productDetailUpdate-admin">
+                                            <c:param name="productDetailID" value="${item.productDetailID}"/>
                                         </c:url>
                                         <td class="hcenter-content"><a href="${productDetailUpdate}" class="btn btn-warning btn-icon-split">
                                                     <span class="icon text-white-50">

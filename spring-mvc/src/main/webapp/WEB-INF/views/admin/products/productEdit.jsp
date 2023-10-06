@@ -119,7 +119,7 @@
 	</c:if>
 
 	<button type="button" id="brand_dialog_cancel">
-		<a href="<c:url value ="/home-product-admin" />">Huỷ bỏ</a>
+		<a href="<c:url value ="/home-productDetail-admin" />">Huỷ bỏ</a>
 	</button>
 
 

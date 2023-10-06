@@ -1,6 +1,7 @@
 package com.Bluewind.controller.admin;
 
 import com.Bluewind.dto.admin.OrderDTO;
+import com.Bluewind.service.IOrderService;
 import com.Bluewind.service.impl.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class OrderController {
     @Autowired
     private MessageUtil messageUtil;
     @Autowired
-    OrderService orderService;
+    private IOrderService orderService;
     @RequestMapping(value = "/home-order-admin", method = RequestMethod.GET)
     public ModelAndView displayList(HttpServletRequest request) {
 
