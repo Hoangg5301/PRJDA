@@ -80,28 +80,8 @@
                                    aria-haspopup="true" aria-expanded="false">
                                     Danh mục
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="sub-nav2">
-
-                                    <li><a class="dropdown-item dropdown-toggle" href="#">Nam</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Type 1</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Type 2</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Type 3</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="dropdown-item dropdown-toggle" href="#">Nữ</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Type 1</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Type 2</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Type 3</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                <ul id="list_category_header" class="dropdown-menu" aria-labelledby="sub-nav2">
+<%--                                    content category--%>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -154,5 +134,34 @@
 </div>
 
 <script>
+    <%--$(document).ready(function() {--%>
+    <%--    $.ajax({--%>
+    <%--        url: '<c:url value="/getproducttype" />',--%>
+    <%--        type: 'GET',--%>
+    <%--        dataType: 'json',--%>
+    <%--        success: function (result) {--%>
 
+    <%--            var arrayProductType = JSON.parse(result);--%>
+
+    <%--            arrayProductType.forEach(listType, index){--%>
+
+    <%--                var newListItem = $('<li></li>');--%>
+
+    <%--                var newLink = $('<a></a>', {--%>
+    <%--                    href: '<c:url value="/products-by-filters?typeID=${listType.typID}"/>',--%>
+    <%--                    text: '${listType.typeName}',--%>
+    <%--                    class: 'dropdown-item dropdown-toggle', // Gán lớp (class) cho phần tử <a>--%>
+    <%--                });--%>
+
+    <%--                //them <a> vafo ther <li>--%>
+    <%--                newListItem.append(newLink);--%>
+
+    <%--                //them <li> vao the tren--%>
+    <%--                $('#list_category_header').append(newListItem);--%>
+    <%--            }--%>
+    <%--        },--%>
+    <%--        error: function (error) {--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--});--%>
 </script>
