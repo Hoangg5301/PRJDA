@@ -3,5 +3,6 @@
     <persistence-unit name="persistence-data">
         <class>com.Bluewind.entity.BrandEntity</class>
 		<class>com.Bluewind.entity.ProductEntity</class>
+        <class>com.Bluewind.entity.OrderDetailEntity</class>
     </persistence-unit>
 </persistence>

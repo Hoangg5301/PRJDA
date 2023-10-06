@@ -3,7 +3,6 @@ package com.Bluewind.controller.user;
 import com.Bluewind.common.CartCommon;
 import com.Bluewind.dto.CartProductDetail;
 import com.Bluewind.dto.OrderResponse;
-import com.Bluewind.dto.admin.CartDTO;
 import com.Bluewind.dto.admin.OrderDTO;
 import com.Bluewind.dto.admin.OrderDetailDTO;
 import com.Bluewind.service.ICartService;
@@ -11,6 +10,7 @@ import com.Bluewind.service.IOrderDetailService;
 import com.Bluewind.service.IOrderService;
 import com.Bluewind.service.impl.OrderService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,6 +42,36 @@ public class OrderController {
         ModelAndView mav = new ModelAndView("");
         List<CartProductDetail> cartProductDetails = cartCommon.getCarts(accountId);
         mav.addObject("cartProductDetails", cartProductDetails);
+        return mav;
+    }
+
+    @GetMapping("/order-by-id")
+    public ModelAndView order(HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("");
+        String accountId = request.getParameter("accountId");
+        List<OrderDTO> orderDTOS = orderService.findAllByAccountID(Integer.parseInt(accountId));
+        List<Integer> orderIds = new ArrayList<>();
+        if (!orderDTOS.isEmpty()) {
+            for (OrderDTO orderDTO : orderDTOS) {
+                orderIds.add(orderDTO.getOrderID());
+            }
+        }
+
+        List<OrderResponse> orderResponses = new ArrayList<>();
+
+        List<OrderDetailDTO> orderDetailDTOS = iOrderDetailService.findAllByProductIDIs(orderIds);
+        if (!orderDetailDTOS.isEmpty()) {
+            for (OrderDTO dto : orderDTOS) {
+                List<OrderDetailDTO> detailDTOS = orderDetailDTOS.stream().filter(o -> Objects.equals(o.getOrderID(), dto.getOrderID())).collect(Collectors.toList());
+                OrderResponse orderResponse = new OrderResponse();
+                orderResponse.setOrderDTO(dto);
+                orderResponse.setOrderDetailDTOS(detailDTOS);
+
+                orderResponses.add(orderResponse);
+            }
+        }
+
+        mav.addObject("orderResponses", orderResponses);
         return mav;
     }
 

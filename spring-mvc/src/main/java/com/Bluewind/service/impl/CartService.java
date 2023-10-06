@@ -81,6 +81,7 @@ public class CartService implements ICartService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Integer id) {
         if (id != null) {
             cartRepository.delete(id);
