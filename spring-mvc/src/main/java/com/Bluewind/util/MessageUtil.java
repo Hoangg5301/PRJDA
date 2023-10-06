@@ -22,6 +22,17 @@ public class MessageUtil {
 		else if(typeMessage.equals("delete_success")) {
 			message.put("message", "xoa thanh cong");
 			message.put("alert", "xoa thanh cong");
+		}else if(typeMessage.equals("register_success")) {
+			message.put("message", "dang ky thanh cong");
+			message.put("alert", "dang ky thanh cong");
+		}
+		else if(typeMessage.equals("register_error")) {
+			message.put("message", "dang ky that bai");
+			message.put("alert", "dang ky that bai");
+		}
+		else if(typeMessage.equals("login_error")) {
+			message.put("message", "sai thong tin tai khoan hoac mat khau");
+			message.put("alert", "sai thong tin tai khoan hoac mat khau");
 		}
 		return message;
 	}

@@ -28,8 +28,8 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 	List<ProductDetailEntity> findByProductDetailIDIsIn(Collection<Integer> productDetailID);
 
     @Modifying
-	@Query("update from ProductDetailEntity p set p.quantity = ?1 where p.productID = ?2 and p.size = ?3")
-	void updateProductDetail(Integer quantity, Integer id, String size);
+	@Query("update ProductDetailEntity p set p.quantity = ?1, p.size = ?2 where p.productDetailID = ?3 ")
+	void updateProductDetail(Integer quantity, String size ,Integer id);
 
     @Query("select p from ProductDetailEntity p where p.productID = ?1 and p.size = ?2")
 	ProductDetailEntity findByProduct(Integer id, String size);

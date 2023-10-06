@@ -132,11 +132,11 @@
                 <div class="fables-header-icons">
                     <form action="/spring_mvc_war_exploded/cart" method="post">
                         <input type="hidden" id="accountId" name="accountId" />
-                        <button type="submit"
+                        <button style="background-color:transparent; border: none;  outline: none;cursor: pointer; " type="submit"
                            class="fables-third-text-color  right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"
                            aria-haspopup="true"
                            aria-expanded="false">
-                            <span class="fables-iconcart-icon font-20"></span>
+                            <span class="fables-iconcart-icon font-16"></span>
                             <span class="fables-cart-number fables-second-background-color text-center">3</span>
                         </button>
                     </form>
@@ -154,7 +154,5 @@
 </div>
 
 <script>
-    const accountId = localStorage.getItem('accountId');
-    $("#accountId").val(accountId);
-    // document.getElementById("accountId"). = accountId;
+
 </script>

@@ -47,8 +47,12 @@ public class ProductDetailService implements IProductDetailService{
 		productDetailRepository.delete(productDetailEntity);
 	}
 
+	@Override
 	public void update(ProductDetailDTO dto) {
-		productDetailRepository.updateProductDetail(dto.getQuantity(), dto.getProductID(), dto.getSize());
+		ProductDetailDTO productDetailDTO = productDetailConvert.toDTO(productDetailRepository.findOne(dto.getProductDetailID()));
+		Integer quantity = productDetailDTO.getQuantity() + dto.getQuantity();
+
+		productDetailRepository.updateProductDetail(quantity, dto.getSize(), dto.getProductDetailID());
 	}
 
     @Override
@@ -78,5 +82,13 @@ public class ProductDetailService implements IProductDetailService{
 		}
 		return listProductDetailDTO;
 	}
+
+	@Override
+	public ProductDetailDTO findoneID(Integer id) {
+		ProductDetailDTO productDetailDTO = productDetailConvert.toDTO(productDetailRepository.findOne(id));
+
+		return productDetailDTO;
+	}
+
 
 }

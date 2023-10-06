@@ -69,10 +69,10 @@
             data : JSON.stringify(data),
             dataType : 'json',
             success : function(result) {
-                window.location.href = '${brandDisplayUrl}?message=add_success';
+                window.location.href = '${brandDisplayUrl}?productID=${model.productID}';
             },
             error : function(error) {
-                window.location.href = '${brandDisplayUrl}?message=error_system';
+                window.location.href = '${brandDisplayUrl}?productID=${model.productID}';
             }
         });
     }
@@ -86,10 +86,10 @@
             data : JSON.stringify(data),
             dataType : 'json',
             success : function(result) {
-                window.location.href = '${brandDisplayUrl}?message=update_success';
+                window.location.href = '${brandDisplayUrl}?productID=${model.productID}';
             },
             error : function(error) {
-                window.location.href = '${brandDisplayUrl}?message=error_system';
+                window.location.href = '${brandDisplayUrl}?productID=${model.productID}';
             }
         });
     }

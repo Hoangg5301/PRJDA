@@ -56,5 +56,13 @@ public class AccountService implements IAccountService{
 	public void delete(Integer id) {
 		accountRepository.delete(id);
 	}
-	
+
+	@Override
+	public AccountDTO checkLogin(String userName, String password) {
+		AccountDTO accountDTO = new AccountDTO();
+		accountDTO = accountConvert.toDTO(accountRepository.checkAccount(userName, password));
+
+		return accountDTO;
+	}
+
 }
