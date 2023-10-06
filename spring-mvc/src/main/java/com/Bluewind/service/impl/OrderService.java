@@ -17,9 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,46 +80,46 @@ public class OrderService implements IOrderService {
     @Override
     @Transactional
     public void saveOrder(OrderRequest request) {
-        OrderDTO orderDTO = request.getOrder();
-        List<OrderDetailDTO> orderDetailDTOS = request.getOrderDetail();
-        if (orderDTO != null) {
-            OrderEntity order = new OrderEntity();
-            OrderEntity oldOrder = new OrderEntity();
-
-            if (orderDTO.getOrderID() != null && orderDTO.getOrderID() != 0) {
-                oldOrder = orderRepository.findOne(order.getOrderID());
-            }
-
-            // new order
-            if (!orderDetailDTOS.isEmpty() && (orderDTO.getOrderID() == null || orderDTO.getOrderID() == 0 || oldOrder == null)) {
-                order = orderConvert.toEntity(orderDTO);
-                create(order, orderDetailDTOS);
-            } else if (oldOrder != null) {
-                // old order
-                orderDTO.setCreateTime(new Date());
-                order = orderConvert.toEntity(orderDTO, oldOrder);
-                orderRepository.save(order);
-            }
-
-        }
+//        OrderDTO orderDTO = request.getOrder();
+//        List<OrderDetailDTO> orderDetailDTOS = request.getOrderDetail();
+//        if (orderDTO != null) {
+//            OrderEntity order = new OrderEntity();
+//            OrderEntity oldOrder = new OrderEntity();
+//
+//            if (orderDTO.getOrderID() != null && orderDTO.getOrderID() != 0) {
+//                oldOrder = orderRepository.findOne(order.getOrderID());
+//            }
+//
+//            // new order
+//            if (!orderDetailDTOS.isEmpty() && (orderDTO.getOrderID() == null || orderDTO.getOrderID() == 0 || oldOrder == null)) {
+//                order = orderConvert.toEntity(orderDTO);
+//                create(order, orderDetailDTOS);
+//            } else if (oldOrder != null) {
+//                // old order
+//                orderDTO.setCreateTime("");
+//                order = orderConvert.toEntity(orderDTO, oldOrder);
+//                orderRepository.save(order);
+//            }
+//
+//        }
     }
 
     private void create(OrderEntity order, List<OrderDetailDTO> orderDetailDTOS) {
         List<OrderDetailEntity> orderDetailEntities = orderDetailDTOS.stream().map(orderDetailDTO -> orderDetailConvert.toEntity(orderDetailDTO)).collect(Collectors.toList());
-        StringBuilder jpql1 = new StringBuilder( "INSERT INTO OrderEntity (fullName, createTime, status, address, phoneNumber, Discount, IDTK) VALUES (:fullName, :createTime, :status, :address, :phoneNumber, :Discount, :IDTK)");
 
-        Query query = entityManager.createQuery(jpql1.toString());
-        query.setParameter("fullName", "Nguyen Van A");
-        query.setParameter("createTime", "");
-        query.setParameter("status", "Wtaiting");
-        query.setParameter("address", "CHo nay");
-        query.setParameter("phoneNumber", "012345678");
-        query.setParameter("Discount", 12);
-        query.setParameter("IDTK", "012345678");
 
-        entityManager.getTransaction().begin();
-        query.executeUpdate();
-        entityManager.getTransaction().commit();
+//        Query query = entityManager.createQuery(jpql1);
+//        query.setParameter("fullName", "Nguyen Van A");
+//        query.setParameter("createTime", "");
+//        query.setParameter("status", "Wtaiting");
+//        query.setParameter("address", "CHo nay");
+//        query.setParameter("phoneNumber", "012345678");
+//        query.setParameter("Discount", 12);
+//        query.setParameter("IDTK", "012345678");
+
+//        entityManager.getTransaction().begin();
+//        query.executeUpdate();
+//        entityManager.getTransaction().commit();
 
         OrderEntity entity = orderRepository.save(order);
         for (OrderDetailEntity detail : orderDetailEntities) {

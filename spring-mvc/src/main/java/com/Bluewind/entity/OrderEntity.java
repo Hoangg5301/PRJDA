@@ -17,7 +17,7 @@ public class OrderEntity {
     private String fullName;
 
     @Column(name = "createTime")
-    private Date createTime;
+    private String createTime;
 
     @NonNull
     @Column(name = "status")
@@ -53,11 +53,11 @@ public class OrderEntity {
         this.orderID = orderID;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

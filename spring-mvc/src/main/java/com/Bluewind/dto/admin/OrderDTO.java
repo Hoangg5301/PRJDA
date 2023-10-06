@@ -11,7 +11,7 @@ public class OrderDTO extends AbstractDTO<OrderDTO>{
 	private Integer orderID;
 
 	private String fullName;
-	private Date createTime;
+	private String createTime;
 	private String status;
 	private String address;
 	private String phoneNumber;
@@ -34,7 +34,7 @@ public class OrderDTO extends AbstractDTO<OrderDTO>{
 		this.orderID = orderID;
 	}
 
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 

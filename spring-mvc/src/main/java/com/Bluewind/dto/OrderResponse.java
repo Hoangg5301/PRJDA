@@ -10,6 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderResponse {
-    private OrderDTO orderDTO;
-    private List<OrderDetailDTO> orderDetailDTOS;
+    private OdDTO odDTO;
+    private List<OdDetailDTO> odDetailDTOS;
 }
