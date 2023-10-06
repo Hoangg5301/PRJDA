@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.BrandEntity;
 
+import java.util.List;
+
 @Repository
 public interface BrandRepository extends JpaRepository<BrandEntity, Integer>{
 	

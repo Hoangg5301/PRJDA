@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Bluewind.entity.ProductEntity;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -29,4 +30,11 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Integer>
 
 	@Query("select p from ProductEntity p where p.productID IN ?1")
 	List<ProductEntity> findAllByProductIds(List<Integer> ids);
+
+	List<ProductEntity> findByProductNameIsContaining(String productName);
+
+	List<ProductEntity> findByBrandIDAndTypeIDAndPriceBetweenOrderByPriceAsc(Integer brandID, Integer typeID, Integer price, Integer price2);
+
+	List<ProductEntity> findByBrandIDAndTypeIDAndPriceBetweenOrderByPriceDesc(Integer brandID, Integer typeID, Integer price, Integer price2);
+
 }

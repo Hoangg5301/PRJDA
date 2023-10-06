@@ -1,7 +1,9 @@
 package com.Bluewind.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,10 @@ import com.Bluewind.repository.BrandRepository;
 import com.Bluewind.repository.ProductDetailRepository;
 import com.Bluewind.repository.ProductRepository;
 import com.Bluewind.service.IProductService;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Service
 public class ProductService implements IProductService {
@@ -32,21 +38,24 @@ public class ProductService implements IProductService {
     @Autowired
     private ProductDetailRepository ProductDetailRepository;
 
-	@Override
-	@Transactional
-	public ProductDTO update(ProductDTO dto) {
-		ProductEntity oldEntity = productRepository.findOne(dto.getProductID());
-		oldEntity = productConvert.toEntity(dto, oldEntity);
-		oldEntity = productRepository.save(oldEntity);
-		ProductDTO productDTO = productConvert.toDTO(oldEntity);
-		//update Detail
-		Integer productId = dto.getProductID();
-		ProductDetailEntity ProductDetailEntity =  ProductDetailRepository.findByProduct(productId, dto.getSize());
-		ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity()+ dto.getQuantity());
-		ProductDetailRepository.save(ProductDetailEntity);
+    @Autowired
+    private EntityManager entityManager;
 
-		return productDTO;
-	}
+    @Override
+    @Transactional
+    public ProductDTO update(ProductDTO dto) {
+        ProductEntity oldEntity = productRepository.findOne(dto.getProductID());
+        oldEntity = productConvert.toEntity(dto, oldEntity);
+        oldEntity = productRepository.save(oldEntity);
+        ProductDTO productDTO = productConvert.toDTO(oldEntity);
+        //update Detail
+        Integer productId = dto.getProductID();
+        ProductDetailEntity ProductDetailEntity = ProductDetailRepository.findByProduct(productId, dto.getSize());
+        ProductDetailEntity.setQuantity(ProductDetailEntity.getQuantity() + dto.getQuantity());
+        ProductDetailRepository.save(ProductDetailEntity);
+
+        return productDTO;
+    }
 
     @Override
     public List<ProductDTO> findAll() {
@@ -106,18 +115,18 @@ public class ProductService implements IProductService {
 
     @Override
     @Transactional
-	public void uploadAdd(String path1, String path2, String path3, String path4) {
-		Integer id = productRepository.findLastId() ;
-		productRepository.uploadAdd(path1, path2, path3, path4, id);
-		
-	}
+    public void uploadAdd(String path1, String path2, String path3, String path4) {
+        Integer id = productRepository.findLastId();
+        productRepository.uploadAdd(path1, path2, path3, path4, id);
+
+    }
 
     @Override
     @Transactional
-	public void uploadUpdate(String path1, String path2, String path3, String path4, Integer id) {
-		productRepository.uploadUpdate(path1, path2, path3, path4, id);
-		
-	}
+    public void uploadUpdate(String path1, String path2, String path3, String path4, Integer id) {
+        productRepository.uploadUpdate(path1, path2, path3, path4, id);
+
+    }
 
     @Override
     public List<ProductDTO> findLast() {
@@ -158,23 +167,94 @@ public class ProductService implements IProductService {
     }
 
     @Override
-	public List<ProductDTO> findBrandName(ProductDTO listProductInDTO) {
-		List<ProductDTO> listProductOutDTO = new ArrayList<>();
-		for(ProductDTO productDTO: listProductInDTO.getListResult()) {
-			Integer id = productDTO.getBrandID();
-			BrandEntity brandEntity = brandRepository.findOne(id);
+    public List<ProductDTO> findByProductNameLike(String productName) {
+        List<ProductDTO> productDTOS;
+        List<ProductEntity> productEntities;
+        if (productName.isEmpty()) {
+            productEntities = productRepository.findAll();
+        } else {
+            productEntities = productRepository.findByProductNameIsContaining(productName);
+        }
+        productDTOS = productEntities.stream().map(p -> productConvert.toDTO(p)).collect(Collectors.toList());
+        return productDTOS;
+    }
+
+    @Override
+    public List<ProductDTO> findByBrandIDAndTypeIDAndPriceBetween(Integer brandID, Integer typeID, Integer price, Integer price2, boolean asc) {
+        List<ProductDTO> productDTOS;
+        List<ProductEntity> productEntities;
+
+        String sql = "select p from ProductEntity p where";
+
+        if (brandID != 0) {
+            sql += " p.brandID = :brandID and";
+        }
+        if (typeID != 0) {
+            sql += " p.typeID = :typeID and";
+        }
+        if (price < price2) {
+            sql += " p.price between :price and :price2";
+        }
+
+        if (sql.endsWith("where")) {
+            sql = sql.substring(0, Math.max(0, sql.length() - "where".length()));
+        }
+        if (sql.endsWith("and")) {
+            sql = sql.substring(0, Math.max(0, sql.length() - "and".length()));
+        }
+
+        sql += "  order by price";
+        if (!asc) {
+            sql += " desc";
+        }
+
+        TypedQuery<ProductEntity> query = entityManager.createQuery(sql, ProductEntity.class);
+
+        if (brandID != 0) {
+            query.setParameter("brandID", brandID);
+        }
+        if (typeID != 0) {
+            query.setParameter("typeID", typeID);
+        }
+        if (price < price2) {
+            query.setParameter("price", price);
+            query.setParameter("price2", price2);
+        }
+
+        productEntities = query.getResultList();
+
+
+//        if (brandID != 0) {
+//            productEntities = productRepository.findAll();
+//        } else {
+//            if (asc) {
+//                productEntities = productRepository.findByBrandIDAndTypeIDAndPriceBetweenOrderByPriceAsc(brandID, typeID, price, price2);
+//            } else {
+//                productEntities = productRepository.findByBrandIDAndTypeIDAndPriceBetweenOrderByPriceDesc(brandID, typeID, price, price2);
+//            }
+//        }
+        productDTOS = productEntities.stream().map(p -> productConvert.toDTO(p)).collect(Collectors.toList());
+        return productDTOS;
+    }
+
+    @Override
+    public List<ProductDTO> findBrandName(ProductDTO listProductInDTO) {
+        List<ProductDTO> listProductOutDTO = new ArrayList<>();
+        for (ProductDTO productDTO : listProductInDTO.getListResult()) {
+            Integer id = productDTO.getBrandID();
+            BrandEntity brandEntity = brandRepository.findOne(id);
             if (brandEntity != null) {
                 productDTO.setBrandName(brandEntity.getBrandName());
                 listProductOutDTO.add(productDTO);
             }
-		}
-		return listProductOutDTO;
-	}
+        }
+        return listProductOutDTO;
+    }
 
-	@Override
-	public Integer findlastID() {
+    @Override
+    public Integer findlastID() {
 
-		return productRepository.findLastId();
-	}
-	
+        return productRepository.findLastId();
+    }
+
 }
