@@ -1,5 +1,7 @@
 package com.Bluewind.entity;
 
+import lombok.NonNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,18 +12,28 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idorder")
     private Integer orderID;
-    @Column(name = "fullnName")
+
+    @Column(name = "fullName")
     private String fullName;
+
     @Column(name = "createTime")
-    private Date createTime;
+    private String createTime;
+
+    @NonNull
     @Column(name = "status")
     private String status;
+
+    @NonNull
     @Column(name = "address")
     private String address;
+
+    @NonNull
     @Column(name = "phoneNumber")
     private String phoneNumber;
+
     @Column(name ="Discount")
     private Integer discount;
+
     @Column(name = "IDTK")
     private Integer accountID;
 
@@ -41,11 +53,11 @@ public class OrderEntity {
         this.orderID = orderID;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

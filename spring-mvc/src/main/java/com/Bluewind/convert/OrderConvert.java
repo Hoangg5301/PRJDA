@@ -22,7 +22,6 @@ public class OrderConvert {
 
     public OrderEntity toEntity(OrderDTO orderDTO) {
         OrderEntity orderEntity = new OrderEntity();
-        orderEntity.setOrderID(orderDTO.getOrderID());
         orderEntity.setFullName(orderDTO.getFullName());
         orderEntity.setAccountID(orderDTO.getAccountID());
         orderEntity.setCreateTime(orderDTO.getCreateTime());
