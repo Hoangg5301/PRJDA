@@ -1,5 +1,6 @@
 package com.Bluewind.controller.user;
 
+import com.Bluewind.common.CartCommon;
 import com.Bluewind.dto.admin.BrandDTO;
 import com.Bluewind.dto.admin.ProductDTO;
 import com.Bluewind.dto.admin.ProductDetailDTO;
@@ -20,11 +21,13 @@ public class ProductController {
     private final IProductService iProductService;
     private final IProductDetailService iProductDetailService;
     private final BrandService brandService;
+    private final CartCommon cartCommon;
 
-    public ProductController(IProductService iProductService, IProductDetailService iProductDetailService, BrandService brandService) {
+    public ProductController(IProductService iProductService, IProductDetailService iProductDetailService, BrandService brandService, CartCommon cartCommon) {
         this.iProductService = iProductService;
         this.iProductDetailService = iProductDetailService;
         this.brandService = brandService;
+        this.cartCommon = cartCommon;
     }
 
     @GetMapping("/products-by-name")
@@ -34,15 +37,6 @@ public class ProductController {
 
         mav.addObject("productDTOS", productDTOS);
         return mav;
-    }
-
-    public Integer stringToNumber(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException numberFormatException) {
-            System.out.println(str + " is not a number");
-            return 0;
-        }
     }
 
     @GetMapping("/products-by-filters")
@@ -55,11 +49,11 @@ public class ProductController {
     ) {
         ModelAndView mav = new ModelAndView("");
 
-        Integer brandIDInt = stringToNumber(brandID);
-        Integer typeIDInt = stringToNumber(typeID);
-        Integer priceInt = stringToNumber(price);
-        Integer price2Int = stringToNumber(price2);
-        boolean asc = stringToNumber(orderBy) == 0;
+        Integer brandIDInt = cartCommon.stringToNumber(brandID);
+        Integer typeIDInt = cartCommon.stringToNumber(typeID);
+        Integer priceInt = cartCommon.stringToNumber(price);
+        Integer price2Int = cartCommon.stringToNumber(price2);
+        boolean asc = cartCommon.stringToNumber(orderBy) == 0;
 
         List<ProductDTO> productDTOS = iProductService.findByBrandIDAndTypeIDAndPriceBetween(brandIDInt, typeIDInt, priceInt, price2Int, asc);
         List<BrandDTO> brandDTOS = brandService.findAll();

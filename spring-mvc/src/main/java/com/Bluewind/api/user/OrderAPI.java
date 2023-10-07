@@ -1,5 +1,7 @@
 package com.Bluewind.api.user;
 
+import com.Bluewind.common.CartCommon;
+import com.Bluewind.dto.OdDTO;
 import com.Bluewind.dto.OdDetailDTO;
 import com.Bluewind.dto.OrderRequest;
 import com.Bluewind.dto.OrderResponse;
@@ -8,7 +10,7 @@ import com.Bluewind.service.ICartService;
 import com.Bluewind.service.OdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -21,12 +23,30 @@ public class OrderAPI {
 
     private final OdService odService;
     private final ICartService iCartService;
+    private final CartCommon cartCommon;
 
 
     @PostMapping("/order")
-    public OrderResponse checkout(@RequestBody OrderRequest request) {
+    public OrderResponse checkout(
+            @RequestParam("fullName") String fullName,
+            @RequestParam("address") String address,
+            @RequestParam("phoneNumber") String phoneNumber,
+            @RequestParam("status") String status,
+            @RequestParam("accountId") String accountId,
+            @RequestParam("discount") String discount
+    ) {
+        OrderRequest request = new OrderRequest();
+        OdDTO odDTO = new OdDTO();
+        odDTO.setFullName(fullName);
+        odDTO.setAddress(address);
+        odDTO.setPhoneNumber(phoneNumber);
+        odDTO.setStatus(cartCommon.stringToNumber(status));
+        odDTO.setAccountId(cartCommon.stringToNumber(accountId));
+        odDTO.setDiscount(cartCommon.stringToNumber(discount));
+
+        request.setOdDTO(odDTO);
         OrderResponse orderResponse = new OrderResponse();
-        if (request != null && request.getOdDTO() != null && request.getOdDTO().getAccountId() != 0) {
+        if (request.getOdDTO() != null && request.getOdDTO().getAccountId() != 0) {
             List<CartDTO> cartDTOList = iCartService.findAllByAccountID(request.getOdDTO().getAccountId());
 
             List<OdDetailDTO> odDetailDTOS = new ArrayList<>();

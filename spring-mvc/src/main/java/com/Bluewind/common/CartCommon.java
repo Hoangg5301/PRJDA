@@ -68,4 +68,13 @@ public class CartCommon {
         }
         return cartProductDetails;
     }
+
+    public Integer stringToNumber(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException numberFormatException) {
+            System.out.println(str + " is not a number");
+            return 0;
+        }
+    }
 }

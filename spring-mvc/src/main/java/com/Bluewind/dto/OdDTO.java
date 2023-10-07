@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class OdDTO {
-    private Integer id;
+    private Integer id = 0;
     private String fullName;
     private String address;
     private String phoneNumber;
