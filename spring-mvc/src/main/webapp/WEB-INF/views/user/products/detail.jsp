@@ -37,13 +37,13 @@
                             <img src="<c:url value='/image/${product.img1}' />" alt="" class="w-100">
                         </div>
                         <div class="item">
-                            <img src="<c:url value='/image/${product.img1}' />" alt="" class="w-100">
+                            <img src="<c:url value='/image/${product.img2}' />" alt="" class="w-100">
                         </div>
                         <div class="item">
-                            <img src="<c:url value='/image/${product.img1}' />" alt="" class="w-100">
+                            <img src="<c:url value='/image/${product.img3}' />" alt="" class="w-100">
                         </div>
                         <div class="item">
-                            <img src="<c:url value='/image/${product.img1}' />" alt="" class="w-100">
+                            <img src="<c:url value='/image/${product.img4}' />" alt="" class="w-100">
                         </div>
                     </div>
                     <div id="sync2" class="owl-carousel owl-theme">
@@ -69,18 +69,11 @@
                         <span class="fables-fifth-text-color"> Kích cỡ : </span>
                     </div>
                     <div class="col-7 col-sm-6">
-                        <ul class="nav">
+                        <select class="form-select" aria-label="Default select example" id="sizeSelected">
                             <c:forEach var="productDetail" items="${productDetailDTOS}">
-                                <li>
-                                    <label class="fable-product-color">
-                                        <input id="productDetailId" type="radio" name="product-color"
-                                               value="${productDetail.productDetailID}">
-                                        <span class="checkmark" style="background-color: #E54D42;"></span>
-                                        <span>${productDetail.size}</span>
-                                    </label>
-                                </li>
+                                <option id="" value="${productDetail.productDetailID}">${productDetail.size}</option>
                             </c:forEach>
-                        </ul>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-5">
@@ -109,13 +102,11 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-6">
-                        <a href="#"
-                           class="btn fables-second-border-color fables-second-text-color fables-btn-rouned fables-hover-btn-color font-14 px-4 py-2 semi-font"
-                           onclick="saveCart($('#productDetailId').val() ,$('#input-val').val())"
-                        >
-                            <c:url var="saveCart" value="/product?id=${product.productID}"/>
-                            <span class="fables-iconcart"></span>
-                            <span class="fables-btn-value">THÊM VÀO GIỎ HÀNG</span></a>
+                        <c:url var="saveCart" value="/product?id=${product.productID}"/>
+                        <button id="addTocart" type="button">
+
+                            <span>THÊM VÀO GIỎ HÀNG</span>
+                        </button>
                     </div>
                     <div class="col-6 text-right">
                         <a href=""
@@ -202,38 +193,43 @@
                 </div>
             </c:forEach>
         </div>
-
+<c:url var='cartCreate'  value="/create-cart" />
     </div>
 </div>
 
 <script src="<c:url value='template/user/assets/vendor/jquery/jquery-3.3.1.min.js'/>"></script>
 
 <script>
-    const accountId = localStorage.getItem('accountId');
 
-    function total() {
-        return '${productDetailDTOS}'.reduce((total, item) => total + item.quantity, 0);
-    }
 
-    const resultParagraph = document.getElementById("result");
-    resultParagraph.textContent = total();
-
-    const createCart = (productID, quantity) => {
-        return {accountID: accountId, productID: productID, quantity: quantity};
-    }
-
-    function saveCart(productID, quantity) {
+    function saveCart(cartDetail) {
         $.ajax({
-            url: '/spring_mvc_war/create-cart',
+            url: '${cartCreate}',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify(createCart(productID, quantity)),
+            data: JSON.stringify(cartDetail),
+            dataType: 'json',
             success: function () {
                 window.location.href = '${saveCart}';
             },
             error: function () {
                 window.location.href = '${saveCart}';
             }
-        })
+        });
     }
+
+    $("#addTocart").click(function (event){
+        var productDetailId = $("#sizeSelected").val();
+        var accountId = localStorage.getItem('accountId');
+        var quantity = $('#input-val').val();
+
+        const cartDetail =  {
+            cartID:"",
+            accountID: accountId,
+            productID : productDetailId,
+            quantity: quantity
+        }
+
+        saveCart(cartDetail)
+    });
 </script>

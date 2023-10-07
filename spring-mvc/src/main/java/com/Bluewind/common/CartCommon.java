@@ -30,14 +30,14 @@ public class CartCommon {
     public List<CartProductDetail> getCarts(Integer accountId) {
         List<CartDTO> cartDTOS = iCartService.findAllByAccountID(accountId);
 
-        List<Integer> pdIds = new ArrayList<>();
+        List<Integer> productDetailIds = new ArrayList<>();
         if (!cartDTOS.isEmpty()) {
             for (CartDTO dto : cartDTOS) {
-                pdIds.add(dto.getProductID());
+                productDetailIds.add(dto.getProductID());
             }
         }
 
-        List<ProductDetailDTO> productDetailDTOS = iProductDetailService.findAllByProductIds(pdIds);
+        List<ProductDetailDTO> productDetailDTOS = iProductDetailService.findByProductDetailIDIsIn(productDetailIds);
 
         List<Integer> pIds = new ArrayList<>();
         if (!productDetailDTOS.isEmpty()) {

@@ -11,6 +11,7 @@ public interface IProductDetailService {
 	ProductDetailDTO insert(ProductDetailDTO dto);
 	void delete(ProductDetailDTO dto);
 	List<ProductDetailDTO> findAllByProductIds(List<Integer> ids);
+	List<ProductDetailDTO> findByProductDetailIDIsIn(List<Integer> ids);
 	List<ProductDetailDTO> findListProductDetailByProduct(Integer id);
 	ProductDetailDTO findoneID(Integer id);
 }

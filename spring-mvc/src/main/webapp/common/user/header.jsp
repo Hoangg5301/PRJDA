@@ -130,7 +130,7 @@
             </div>
             <div class="col-12 col-md-2 col-lg-3 pr-md-0 icons-header-mobile icon-margin">
                 <div class="fables-header-icons">
-                    <form action="/spring_mvc_war_exploded/cart" method="post">
+                    <form action="<c:url value='/cart' />" method="post">
                         <input type="hidden" id="accountId" name="accountId" />
                         <button style="background-color:transparent; border: none;  outline: none;cursor: pointer; " type="submit"
                            class="fables-third-text-color  right px-3 px-md-2 px-lg-4 fables-second-hover-color top-header-link max-line-height position-relative"

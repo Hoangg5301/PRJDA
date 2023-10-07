@@ -25,6 +25,8 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetailEnti
 	@Query("select pd from ProductDetailEntity pd where pd.productID IN ?1")
 	List<ProductDetailEntity> findAllByProductIds(List<Integer> ids);
 
+	List<ProductDetailEntity> findAllByProductIDIsIn(Collection<Integer> productDetailID);
+
 	List<ProductDetailEntity> findByProductDetailIDIsIn(Collection<Integer> productDetailID);
 
     @Modifying

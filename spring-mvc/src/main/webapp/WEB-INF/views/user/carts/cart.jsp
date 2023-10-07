@@ -33,7 +33,7 @@
     // Gửi giá trị lên server (controller) bằng Ajax request
     function refresh() {
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '/cart',
             header: myHeaders,
             success: function (response) {
