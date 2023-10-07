@@ -1,6 +1,7 @@
 package com.Bluewind.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,9 +83,9 @@ public class CartService implements ICartService {
 
     @Override
     @Transactional
-    public void deleteById(Integer id) {
-        if (id != null) {
-            cartRepository.delete(id);
+    public void deleteById(Collection<Integer> cartIDs) {
+        if (!cartIDs.isEmpty()) {
+            cartRepository.deleteAllByCartIDIsIn(cartIDs);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.Bluewind.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +24,6 @@ public interface CartRepository extends JpaRepository<CartEntity, Integer>{
 	List<CartEntity> findAllByAccountID(Integer accountID);
 
 	CartEntity findByAccountIDAndProductID(Integer accountID, Integer productID);
+
+	void deleteAllByCartIDIsIn(Collection<Integer> cartIDs);
 }

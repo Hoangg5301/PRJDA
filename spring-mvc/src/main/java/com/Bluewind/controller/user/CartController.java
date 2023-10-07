@@ -48,7 +48,7 @@ public class CartController {
     @RequestMapping(value = "/cart", method = RequestMethod.DELETE)
     private ModelAndView removeCart(@RequestBody Integer id) {
         ModelAndView mav = new ModelAndView("user/carts/cart");
-        iCartService.deleteById(id);
+        iCartService.deleteById(List.of(id));
 
         return mav;
     }

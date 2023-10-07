@@ -1,5 +1,6 @@
 package com.Bluewind.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.Bluewind.dto.admin.CartDTO;
@@ -13,7 +14,7 @@ public interface ICartService {
 
 	List<CartDTO> findAllByAccountID(Integer userID);
 
-	void deleteById(Integer id);
+	void deleteById(Collection<Integer> cartIDs);
 
 	CartDTO updateByCartIDAndAccountID(Integer accountID, Integer productID, Integer quantity);
 

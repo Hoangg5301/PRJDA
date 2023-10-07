@@ -33,7 +33,7 @@ public class CartCommon {
         List<Integer> productDetailIds = new ArrayList<>();
         if (!cartDTOS.isEmpty()) {
             for (CartDTO dto : cartDTOS) {
-                productDetailIds.add(dto.getProductID());
+                productDetailIds.add(dto.getProductID()); // lay ra product detail id
             }
         }
 
@@ -41,7 +41,7 @@ public class CartCommon {
 
         List<Integer> pIds = new ArrayList<>();
         if (!productDetailDTOS.isEmpty()) {
-            for (ProductDetailDTO dto : productDetailDTOS) {
+            for (ProductDetailDTO dto : productDetailDTOS) { // lay ra product id
                 pIds.add(dto.getProductID());
             }
         }
