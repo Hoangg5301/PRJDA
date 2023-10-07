@@ -34,196 +34,42 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>23/09/2023</td>
-                                        	<td>134 đương Cầu Diễn, Bắc Từ Liêm Hà Nội</td>
-                                        	<td>0154689346</td>
-                                        	<td>Đã xác nhận</td>
-                                        	<c:url var="brandUpdate" value="home-brandupdate-admin">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                        	<td class="hcenter-content"><a href="${brandUpdate}" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-fw fa-cog"></i>
-                                                    </span>
-                                                    <span class="text">Sửa</span>
-                                                </a>
-                                                
-                                             <c:url var="brandDelete" value="/api/brand">
-												<c:param name="id" value="${item.brandID}"/>
-											</c:url>
-                                                <a href="${brandDelete}" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Xóa</span>
-                                                </a>
-                                             </td>
-                                        </tr>
-                                    </tbody>
+                                    <c:forEach var="item" items="${model}" varStatus="loop">
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td>${item.createdDate}</td>
+                                        <td>${item.address}</td>
+                                        <td>${item.phoneNumber}</td>
+
+                                        <c:if test="${item.status == 0}">
+                                            <td>Đã huỷ</td>
+                                        </c:if>
+                                        <c:if test="${item.status == 1}">
+                                            <td>Chưa xác nhận</td>
+                                        </c:if>
+
+                                        <c:if test="${item.status == 2}">
+                                            <td>Đang giao</td>
+                                        </c:if>
+                                        <c:if test="${item.status == 3}">
+                                            <td>Hoàn tất</td>
+                                        </c:if>
+
+                                        <c:url var="orderupdate" value="home-orderupdate-admin">
+                                            <c:param name="id" value="${item.id}"/>
+                                        </c:url>
+                                        <td>
+                                            <select class="select_status" name="${item.id}">
+                                                <option>Lựa chọn</option>
+                                                <option value="0">Đã huỷ</option>
+                                                <option value="1">Chưa xác nhận</option>
+                                                <option value="2">Xác nhận</option>
+                                                <option value="3">Đang giao</option>
+                                                <option value="4">Hoàn tất</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                         </div>
@@ -232,3 +78,28 @@
                 </div>
 	</div>
 </div>
+
+<script>
+    $('.select_status').change(function selectfunction(){
+        var idSelect= this.name;
+        var statusSelect = this.value;
+        const data = {
+            id: idSelect,
+            status: statusSelect
+        }
+
+        $.ajax({
+            url : '<c:url value="/api/order" />',
+            type : 'PUT',
+            contentType : 'application/json',
+            data : JSON.stringify(data),
+            dataType : 'json',
+            success : function(result) {
+                window.location.href = '<c:url value="/home-order-admin" />';
+            },
+            error : function(error) {
+                window.location.href = '<c:url value="/home-order-admin" />';
+            }
+        });
+    });
+</script>

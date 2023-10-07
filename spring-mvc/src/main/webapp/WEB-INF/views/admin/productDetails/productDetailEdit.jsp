@@ -14,6 +14,7 @@
                     <td><label><b>Size:</b></label></td>
                     <td>
                         <form:input path="size" />
+                        <input type="hidden" id="productID"  name ="productID" value="${model.productID}"/>
                         <input type="hidden" id="productDetailID"  name ="productDetailID" value="${model.productDetailID}"/>
                     </td>
                 </tr>

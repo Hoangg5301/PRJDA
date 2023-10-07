@@ -42,7 +42,7 @@
                                                 <input type="hidden" value = "${item.productID}" id="idElement_${loop.index}" name="idElement" />
                                                 <input type="hidden" value = "${item.productName}" id="nameElement_${loop.index}" name="nameElement" />
                                                 <td><a href="<c:url value='home-productDetail-admin?productID=${item.productID}&productName=${item.productName}' /> ">${item.productName}</a></td>
-                                                <td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}' />" /></td>
+                                                <td><img style="weight: 100px; height: 100px;" src="<c:url value ='${item.img1}'/>" /></td>
                                                 <td>${item.price} VNĐ</td>
                                                 <td>${item.quantity}</td>
                                                 <td>${item.brandName}</td>

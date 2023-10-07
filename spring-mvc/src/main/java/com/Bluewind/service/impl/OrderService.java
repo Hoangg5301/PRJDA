@@ -2,11 +2,14 @@ package com.Bluewind.service.impl;
 
 import com.Bluewind.convert.OrderConvert;
 import com.Bluewind.convert.OrderDetailConvert;
+import com.Bluewind.dto.OdDTO;
 import com.Bluewind.dto.OrderRequest;
 import com.Bluewind.dto.admin.OrderDTO;
 import com.Bluewind.dto.admin.OrderDetailDTO;
+import com.Bluewind.entity.Od;
 import com.Bluewind.entity.OrderDetailEntity;
 import com.Bluewind.entity.OrderEntity;
+import com.Bluewind.repository.OdRepository;
 import com.Bluewind.repository.OrderDetailRepository;
 import com.Bluewind.repository.OrderRepository;
 import com.Bluewind.service.IOrderService;
@@ -25,7 +28,9 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService implements IOrderService {
     @Autowired
-    private OrderRepository orderRepository;
+    private OdRepository odRepository;
+
+    @Autowired OrderRepository orderRepository;
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
@@ -40,12 +45,20 @@ public class OrderService implements IOrderService {
     private EntityManager entityManager;
 
     @Override
-    public List<OrderDTO> findAll() {
-        List<OrderEntity> listOrderEntity = orderRepository.findAll();
-        List<OrderDTO> listOrderDTO = new ArrayList<>();
-        OrderDTO orderDTO;
-        for (OrderEntity orderEntity : listOrderEntity) {
-            orderDTO = orderConvert.toDTO(orderEntity);
+    public List<OdDTO> findAll() {
+        List<Od> listOrderEntity = odRepository.findAll();
+        List<OdDTO> listOrderDTO = new ArrayList<>();
+
+        for (Od orderEntity : listOrderEntity) {
+            OdDTO orderDTO = new OdDTO();
+            orderDTO.setId(orderEntity.getId());
+            orderDTO.setFullName(orderEntity.getFullName());
+            orderDTO.setAddress(orderEntity.getAddress());
+            orderDTO.setPhoneNumber(orderEntity.getPhoneNumber());
+            orderDTO.setCreatedDate(orderEntity.getCreatedDate());
+            orderDTO.setStatus(orderEntity.getStatus());
+            orderDTO.setAccountId(orderEntity.getAccountId());
+            orderDTO.setDiscount(orderEntity.getDiscount());
             listOrderDTO.add(orderDTO);
         }
         return listOrderDTO;

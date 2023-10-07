@@ -85,4 +85,14 @@ public class OdDetailImpl implements OdService {
         }
         return response;
     }
+
+    @Override
+    public OdDTO updatebyOdID(OdDTO dto) {
+        Integer id = dto.getId();
+        Od odEntity = odRepository.findOne(id);
+        odEntity.setStatus(dto.getStatus());
+        odEntity= odRepository.save(odEntity);
+        dto.setStatus(odEntity.getStatus());
+        return dto;
+    }
 }

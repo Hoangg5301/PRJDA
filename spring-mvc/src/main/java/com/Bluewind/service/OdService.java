@@ -12,4 +12,6 @@ public interface OdService {
     List<OdDTO> findAllByAccountID(Integer accountID);
 
     OrderResponse saveOrder(OrderRequest request);
+
+    OdDTO updatebyOdID(OdDTO dto);
 }

@@ -1,6 +1,8 @@
 package com.Bluewind.controller.admin;
 
+import com.Bluewind.dto.OdDTO;
 import com.Bluewind.dto.admin.OrderDTO;
+import com.Bluewind.entity.Od;
 import com.Bluewind.service.IOrderService;
 import com.Bluewind.service.IOrderService;
 import com.Bluewind.service.impl.OrderService;
@@ -13,6 +15,7 @@ import com.Bluewind.util.MessageUtil;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller(value = "orderControllerOfAdmin")
@@ -26,14 +29,13 @@ public class OrderController {
     public ModelAndView displayList(HttpServletRequest request) {
 
         ModelAndView mav = new ModelAndView("admin/orders/order");
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setListResult(orderService.findAll());
+        List<OdDTO> orderDTO = (orderService.findAll());
 
-        if(request.getParameter("message") != null) {
-            Map<String, String> mapMessage = messageUtil.getMessage(request.getParameter("message"));
-            mav.addObject("message", mapMessage.get("message"));
-            mav.addObject("alert", mapMessage.get("alert"));
-        }
+//        if(request.getParameter("message") != null) {
+//            Map<String, String> mapMessage = messageUtil.getMessage(request.getParameter("message"));
+//            mav.addObject("message", mapMessage.get("message"));
+//            mav.addObject("alert", mapMessage.get("alert"));
+//        }
         mav.addObject("model",orderDTO);
         return mav;
     }

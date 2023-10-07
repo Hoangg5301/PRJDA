@@ -37,8 +37,14 @@ public class ProductDetailService implements IProductDetailService{
 	@Override
 	public ProductDetailDTO insert(ProductDetailDTO dto) {
 		ProductDetailEntity productDetailEntity = productDetailConvert.toEntity(dto);
-		
-		return productDetailConvert.toDTO(productDetailRepository.save(productDetailEntity));
+		ProductDetailEntity test = productDetailRepository.findByProduct(dto.getProductID(), dto.getSize());
+		if(test == null){
+			return productDetailConvert.toDTO(productDetailRepository.save(productDetailEntity));
+		}else{
+			Integer quantityNew = test.getQuantity() + dto.getQuantity();
+			productDetailEntity.setQuantity(quantityNew);
+			return productDetailConvert.toDTO(productDetailRepository.save(productDetailEntity));
+		}
 	}
 
 	@Override
@@ -60,7 +66,7 @@ public class ProductDetailService implements IProductDetailService{
         List<ProductDetailDTO> productDetailDTOS = new ArrayList<>();
 
         if (!ids.isEmpty()) {
-            List<ProductDetailEntity> productDetailEntities = productDetailRepository.findByProductDetailIDIsIn(ids);
+            List<ProductDetailEntity> productDetailEntities = productDetailRepository.findAllByProductIds(ids);
             if (!productDetailEntities.isEmpty()) {
                 for (ProductDetailEntity detail : productDetailEntities) {
                     productDetailDTOS.add(productDetailConvert.toDTO(detail));

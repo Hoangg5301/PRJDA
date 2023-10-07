@@ -18,39 +18,33 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Tạo một tài khoản</h2>
 
-                            <form id="form_register" method="POST" action="<c:url value='/api/account' /> ">
+                            <form id="form_register" method="POST">
 
                                 <div class="form-outline mb-4">
-                                    <input name="" type="text" id="form3Example1cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example1cg">Tên đăng nhập</label>
+                                    <input name="userName" type="text" id="form3Example1cg" class="form-control form-control-lg" />
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example3cg">Email</label>
+                                    <input name="email" type="email" id="form3Example3cg" class="form-control form-control-lg" />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example3cg">Số điện thoại</label>
+                                    <input name="phoneNumber" type="text" id="form3Example3cg" class="form-control form-control-lg" />
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example3cg">Địa chỉ</label>
+                                    <input name="address" type="text" id="form3Example3cg" class="form-control form-control-lg" />
                                 </div>
                                 <%--input status và role mạc định--%>
                                 <input type="hidden" name="status" id="form3Example3cg" class="form-control form-control-lg" value="1"/>
                                 <input type="hidden" name="role" id="form3Example3cg" class="form-control form-control-lg" value="1"/>
                                 <%--input status và role mạc định--%>
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example4cg">Mật khẩu</label>
+                                    <input name="password" type="password" id="form3Example4cg" class="form-control form-control-lg" />
                                 </div>
-
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Example4cdg">Nhập lại mật khẩu</label>
-                                </div>
-
                                 <div class="d-flex justify-content-center">
                                     <button id="submit_register" type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng ký</button>
                                 </div>
@@ -71,7 +65,7 @@
     $("#submit_register").click(function(e) {
         e.preventDefault();
         var data ={};
-        var formData = $('#form-register').serializeArray();
+        var formData = $('#form_register').serializeArray();
 
         // truyền form data vào object data.
         $.each(formData, function(i, v){

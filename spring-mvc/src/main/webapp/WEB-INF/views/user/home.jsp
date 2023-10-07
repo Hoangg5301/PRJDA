@@ -126,8 +126,7 @@
                     <div class="fables-second-color-transparent p-6">
                         <h2 class="white-color font-weight-bold mb-4 font-35 wow fadeInLeft">Về <br>Chúng tôi</h2>
                         <p class="fables-third-text-color wow fadeInLeft">
-                            Một công ty chuyên bán giày thối chân chỉ có mấy thằng đỗ nghèo khỉ mới bị chúng tôi lùa
-                            gà. Gày đảm bảo đi được 2 ngày bay mẹ đế. Uy tín luôn.
+                            Một công ty chuyên cung cấp các thương hiệu uy tín.
                         </p>
                         <a href="#"
                            class="btn border border-white white-color rounded-0 my-4 py-2 px-5  wow fadeInLeft bg-white-hover fables-second-hover-color">Xem
@@ -187,3 +186,36 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '<c:url value="/getproducttype" />',
+            type: 'GET',
+            dataType: 'json',
+            success: function (result) {
+
+                var arrayProductType = JSON.parse(result);
+
+                arrayProductType.forEach(listType, index){
+
+                    var newListItem = $('<li></li>');
+
+                    var newLink = $('<a></a>', {
+                        href: '<c:url value="/products-by-filters?typeID=${listType.typID}"/>',
+                        text: '${listType.typeName}',
+                        class: 'dropdown-item dropdown-toggle', // Gán lớp (class) cho phần tử <a>
+                    });
+
+                    //them <a> vafo ther <li>
+                    newListItem.append(newLink);
+
+                    //them <li> vao the tren
+                    $('#list_category_header').append(newListItem);
+                }
+            },
+            error: function (error) {
+            }
+        });
+    });
+</script>

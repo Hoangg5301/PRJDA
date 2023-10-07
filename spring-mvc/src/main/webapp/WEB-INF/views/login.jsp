@@ -38,6 +38,7 @@
 
                         <button id="submit_login" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
                         <hr class="my-4">
+                        <p class="text-center text-muted mt-5 mb-0">Bạn chưa có tài khoản? <a href="<c:url value="/register" />" class="fw-bold text-body"><u>Tạo tài khoản</u></a></p>
                     </div>
                 </div>
                 </form>
@@ -88,7 +89,7 @@
                     localStorage.setItem('address', result.address);
                     localStorage.setItem('accountId', result.accountID);
                     localStorage.setItem('status', result.status);
-                    window.location.href = '<c:url value="/hone" />';
+                    window.location.href = '<c:url value="/home" />';
                 }else{
                     window.location.href = '<c:url value="/login" />?message=login_error';
                 }

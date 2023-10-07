@@ -23,21 +23,23 @@ public class ProductDetailController {
      ModelAndView mav = new ModelAndView("admin/productDetails/productDetail");
         ProductDetailDTO productDetailDTO = new ProductDetailDTO();
         productDetailDTO.setProductName(productName);
+        productDetailDTO.setProductID(id);
         productDetailDTO.setListResult(productDetailService.findListProductDetailByProduct(id));
         mav.addObject("model",productDetailDTO);
      return mav;
     }
 
     @RequestMapping(value = "/home-productDetailUpdate-admin", method = RequestMethod.GET)
-    public ModelAndView getUpdate(@RequestParam(value ="productDetailID", required = false) Integer id) {
+    public ModelAndView getUpdate(@RequestParam(value ="productDetailID", required = false) Integer productDetailID, @RequestParam(value ="productID", required = false) Integer productID) {
 
         ModelAndView mav = new ModelAndView("admin/productDetails/productDetailEdit");
         ProductDetailDTO productDetailDTO = new ProductDetailDTO();
-        if(id == null) {
+        productDetailDTO.setProductID(productID);
+        if(productDetailID == null) {
             mav.addObject("model", productDetailDTO);
             return mav;
         }else{
-            productDetailDTO = productDetailService.findoneID(id);
+            productDetailDTO = productDetailService.findoneID(productDetailID);
             mav.addObject("model", productDetailDTO);
             return mav;
         }

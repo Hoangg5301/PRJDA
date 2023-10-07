@@ -95,7 +95,7 @@
                     </tbody>
                 </table>
                 <div class="float-right text-right">
-                    <h4>Tổng tiền:</h4>
+
                     <h1></h1>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                 </form>
             </div>
             <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                <a href="catalog.html">
+                <a href="<c:url value='/trang-chu' />">
                     <i class="fas fa-arrow-left mr-2"></i> Tiếp tục mua hàng</a>
             </div>
         </div>

@@ -64,8 +64,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <c:url var="postAdd" value ="home-postupdate-admin" />
-                        <div style="align-items: end; justify-content: end;"><button id="brand_add" type="button"><a href="${postAdd}">Thêm</a></button></div>
+                        <c:url var="productDetail" value ="home-productDetailUpdate-admin" />
+                        <div style="align-items: end; justify-content: end;"><button id="brand_add" type="button"><a href="${productDetail}?productID=${model.productID}&productDetailID=${model.productDetailID}">Thêm</a></button></div>
                     </form:form>
                 </div>
             </div>

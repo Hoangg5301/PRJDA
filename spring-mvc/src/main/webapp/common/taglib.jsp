@@ -3,5 +3,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.Collection"%>
 <%@ page import="java.util.List"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
